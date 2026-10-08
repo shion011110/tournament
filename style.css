@@ -1,0 +1,6050 @@
+/* ==========================================================
+   Tournament
+   Mayday Style
+========================================================== */
+
+
+/* ==========================================================
+   基本カラー
+========================================================== */
+
+:root {
+    --bg: #080d16;
+    --bg-soft: #0d1522;
+
+    --panel: #101827;
+    --panel-soft: #111c2c;
+    --panel-dark: #0b1422;
+
+    --border: #293548;
+    --border-light: #3b475a;
+
+    --text: #f1f5f9;
+    --text-soft: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --blue: #2563eb;
+    --blue-hover: #3b82f6;
+    --blue-light: #60a5fa;
+
+    --green: #22c55e;
+    --green-dark: #15803d;
+    --green-light: #4ade80;
+
+    --yellow: #f59e0b;
+    --yellow-light: #facc15;
+
+    --red: #ef4444;
+    --red-dark: #991b1b;
+
+    --radius: 14px;
+
+    --safe-top: env(safe-area-inset-top);
+    --safe-bottom: env(safe-area-inset-bottom);
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    min-height: 100%;
+
+    background: var(--bg);
+
+    color-scheme: dark;
+}
+
+
+body {
+    margin: 0;
+
+    min-width: 320px;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #13213a 0,
+            #080d16 440px
+        );
+
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Yu Gothic UI",
+        "Meiryo",
+        sans-serif;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+button,
+input {
+    font: inherit;
+}
+
+
+button {
+    touch-action: manipulation;
+}
+
+
+button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.45;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   ヘッダー
+========================================================== */
+
+.app-header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    padding-top: var(--safe-top);
+
+    border-bottom: 1px solid var(--border);
+
+    background:
+        rgba(8, 13, 22, 0.94);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+.header-inner {
+    width: 100%;
+    max-width: 1100px;
+
+    min-height: 68px;
+
+    margin: 0 auto;
+
+    padding: 10px 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.brand {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+}
+
+
+.brand-mark {
+    width: 42px;
+    min-height: 42px;
+    height: auto;
+
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #3b82f6;
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1d4ed8,
+            #0f172a
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 5px 20px rgba(37, 99, 235, 0.16);
+}
+
+
+.brand-text {
+    min-width: 0;
+}
+
+
+.brand h1 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: clamp(18px, 4.2vw, 22px);
+
+    line-height: 1.1;
+
+    white-space: nowrap;
+}
+
+
+.brand-subtitle {
+    margin-top: 4px;
+
+    color: var(--blue-light);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==========================================================
+   メイン
+========================================================== */
+
+.main-content {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding:
+        26px
+        18px
+        calc(50px + var(--safe-bottom));
+}
+
+
+.screen {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   トップ画面
+========================================================== */
+
+.home-container {
+    width: min(100%, 620px);
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   ウェルカム
+========================================================== */
+
+.welcome-section {
+    padding:
+        30px
+        16px
+        26px;
+
+    text-align: center;
+}
+
+
+.welcome-mark {
+    width: 70px;
+    height: 70px;
+
+    margin:
+        0
+        auto
+        16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #3b82f6;
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1d4ed8,
+            #0f172a
+        );
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 15px 45px rgba(37, 99, 235, 0.20);
+}
+
+
+.welcome-section h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(27px, 7vw, 38px);
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+}
+
+
+.welcome-subtitle {
+    margin-top: 7px;
+
+    color: var(--blue-light);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2.5px;
+}
+
+
+.welcome-section p {
+    margin:
+        20px
+        0
+        0;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+.mobile-break {
+    display: none;
+}
+
+
+/* ==========================================================
+   パネル
+========================================================== */
+
+.panel {
+    width: 100%;
+
+    margin-bottom: 14px;
+
+    padding: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(16, 24, 39, 0.98),
+            rgba(12, 20, 33, 0.98)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+
+.home-panel {
+    padding:
+        25px
+        26px
+        27px;
+}
+
+
+.panel-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 14px;
+
+    margin: 0 10px 18px;
+}
+
+
+.panel-header.centered {
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.panel h2 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+.panel-subtitle {
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.8px;
+}
+
+
+/* ==========================================================
+   OR
+========================================================== */
+
+.or-separator {
+    width: 100%;
+
+    margin: 18px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.or-separator::before,
+.or-separator::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--border-light)
+        );
+}
+
+
+.or-separator::after {
+    background:
+        linear-gradient(
+            90deg,
+            var(--border-light),
+            transparent
+        );
+}
+
+
+.or-separator span {
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================
+   フォーム
+========================================================== */
+
+.tournament-form {
+    width: 100%;
+    max-width: 480px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 17px;
+}
+
+
+.form-field {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.form-label {
+    color: var(--text-soft);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.form-field input {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 15px;
+
+    border: 1px solid #475569;
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #080f1b;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.form-field input:hover {
+    border-color: #64748b;
+}
+
+
+.form-field input:focus {
+    border-color: #3b82f6;
+
+    background: #0a1220;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+
+.form-field input::placeholder {
+    color: #475569;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   ボタン共通
+========================================================== */
+
+.button {
+    min-height: 44px;
+
+    padding:
+        9px
+        13px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.08s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+
+/* ==========================================================
+   青ボタン
+========================================================== */
+
+.button-primary {
+    border-color: #1d4ed8;
+
+    background:
+        linear-gradient(
+            180deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    box-shadow:
+        0 5px 16px rgba(37, 99, 235, 0.15);
+}
+
+
+.button-primary:hover:not(:disabled) {
+    border-color: #3b82f6;
+
+    background:
+        linear-gradient(
+            180deg,
+            #3b82f6,
+            #2563eb
+        );
+}
+
+
+/* ==========================================================
+   サブボタン
+========================================================== */
+
+.button-secondary {
+    border-color: #475569;
+
+    background: #172337;
+
+    color: #e2e8f0;
+}
+
+
+.button-secondary:hover:not(:disabled) {
+    border-color: #64748b;
+
+    background: #1e293b;
+}
+
+
+/* ==========================================================
+   危険ボタン
+========================================================== */
+
+.button-danger {
+    border-color: #ef4444;
+
+    background: #991b1b;
+
+    color: #ffffff;
+}
+
+
+.button-danger:hover:not(:disabled) {
+    background: #b91c1c;
+}
+
+
+/* ==========================================================
+   大ボタン
+========================================================== */
+
+.large-button {
+    width: 100%;
+
+    min-height: 52px;
+
+    margin-top: 3px;
+
+    font-size: 15px;
+}
+
+
+/* ==========================================================
+   メッセージ
+========================================================== */
+
+.message {
+    width: min(100%, 620px);
+
+    margin:
+        0
+        auto
+        18px;
+
+    padding: 13px 16px;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    background: #0d1624;
+
+    color: var(--text-soft);
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.6;
+}
+
+
+.message.success {
+    border-color: #15803d;
+
+    background: rgba(21, 256, 61, 0.15);
+
+    color: var(--green-light);
+}
+
+
+.message.error {
+    border-color: #b91c1c;
+
+    background: rgba(185, 28, 28, 0.15);
+
+    color: #fca5a5;
+}
+
+
+.message.info {
+    border-color: #2563eb;
+
+    background: rgba(37, 99, 235, 0.12);
+
+    color: #93c5fd;
+}
+
+
+/* ==========================================================
+   大会画面
+========================================================== */
+
+#tournamentScreen {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   大会情報
+========================================================== */
+
+.tournament-info-panel {
+    padding:
+        25px
+        20px;
+
+    border-color: #334155;
+}
+
+
+.tournament-title-area {
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.tournament-label {
+    margin-bottom: 7px;
+
+    color: var(--blue-light);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2.5px;
+}
+
+
+.tournament-title-area h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: clamp(24px, 6vw, 34px);
+    font-weight: 900;
+}
+
+
+.tournament-code-block {
+    width: fit-content;
+    max-width: 100%;
+
+    margin:
+        18px
+        auto
+        0;
+
+    padding:
+        9px
+        16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    background: #080f1b;
+}
+
+
+.code-label {
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.tournament-code-block strong {
+    color: #93c5fd;
+
+    margin-right: 8px;
+
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
+
+    font-size: 16px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.copy-button {
+    min-height: 34px;
+
+    padding:
+        5px
+        10px;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   バッジ
+========================================================== */
+
+.count-badge,
+.status-badge,
+.host-badge {
+    flex-shrink: 0;
+
+    padding:
+        6px
+        10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+.count-badge {
+    border: 1px solid #1d4ed8;
+
+    background: rgba(37, 99, 235, 0.13);
+
+    color: #93c5fd;
+}
+
+
+.status-badge.waiting {
+    border: 1px solid #92400e;
+
+    background: rgba(245, 158, 11, 0.12);
+
+    color: #facc15;
+}
+
+
+.status-badge.active {
+    border: 1px solid #1d4ed8;
+
+    background: rgba(37, 99, 235, 0.13);
+
+    color: #93c5fd;
+}
+
+
+.status-badge.finished {
+    border: 1px solid #15803d;
+
+    background: rgba(21, 256, 61, 0.14);
+
+    color: #4ade80;
+}
+
+
+.host-badge {
+    border: 1px solid #2563eb;
+
+    background: rgba(37, 99, 235, 0.13);
+
+    color: #60a5fa;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================================
+   空状態
+========================================================== */
+
+.empty-state {
+    width: 100%;
+
+    padding:
+        26px
+        15px;
+
+    color: #64748b;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.7;
+}
+
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+
+    margin:
+        0
+        auto
+        11px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #334155;
+    border-radius: 12px;
+
+    background: #0b1422;
+
+    color: #60a5fa;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
+/* ==========================================================
+   参加者
+========================================================== */
+
+.participant-list {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+}
+
+
+.participant-item {
+    min-width: 0;
+    min-height: 56px;
+
+    padding:
+        10px
+        12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    background: #0d1624;
+}
+
+
+.participant-name {
+    min-width: 0;
+
+    overflow: hidden;
+
+    color: #f1f5f9;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.participant-status {
+    flex-shrink: 0;
+
+    padding:
+        4px
+        8px;
+
+    border-radius: 999px;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+.participant-status.active {
+    background: rgba(34, 197, 94, 0.13);
+
+    color: #4ade80;
+}
+
+
+.participant-status.suspended {
+    background: rgba(245, 158, 11, 0.14);
+
+    color: #facc15;
+}
+
+
+.participant-status.banned {
+    background: rgba(239, 68, 68, 0.14);
+
+    color: #f87171;
+}
+
+
+/* ==========================================================
+   トーナメント表
+========================================================== */
+
+.bracket-panel {
+    overflow: hidden;
+}
+
+
+.bracket {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding:
+        10px
+        4px
+        20px;
+
+    scrollbar-color:
+        #334155
+        #0b1220;
+}
+
+
+.bracket-inner {
+    width: max-content;
+    min-width: 100%;
+
+    display: flex;
+
+    align-items: stretch;
+    justify-content: center;
+
+    gap: 38px;
+}
+
+
+.bracket-round {
+    min-width: 210px;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-around;
+
+    gap: 16px;
+}
+
+
+.bracket-round-title {
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    text-align: center;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.match-card {
+    width: 210px;
+
+    overflow: hidden;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    background: #0b1422;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.match-player {
+    min-height: 43px;
+
+    padding:
+        9px
+        11px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.match-player + .match-player {
+    border-top: 1px solid #293548;
+}
+
+
+.match-player.winner {
+    background:
+        rgba(34, 197, 94, 0.11);
+
+    color: #4ade80;
+
+    font-weight: 900;
+}
+
+
+.match-player.banned {
+    background:
+        rgba(239, 68, 68, 0.06);
+
+    color: #64748b;
+
+    text-decoration: line-through;
+}
+
+
+/* ==========================================================
+   自分の試合
+========================================================== */
+
+.my-match-panel {
+    max-width: 620px;
+
+    margin:
+        0
+        auto
+        14px;
+
+    padding:
+        24px;
+
+    border-color: #1d4ed8;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 35px rgba(37, 99, 235, 0.08);
+}
+
+
+.my-match-info {
+    min-height: 70px;
+
+    margin:
+        8px
+        0
+        18px;
+
+    padding:
+        16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #334155;
+    border-radius: 11px;
+
+    background: #080f1b;
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    line-height: 1.6;
+}
+
+
+.button-victory {
+    width: min(100%, 340px);
+
+    min-height: 58px;
+
+    border: 2px solid #14532d;
+
+    background:
+        linear-gradient(
+            180deg,
+            #22c55e,
+            #15803d
+        );
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 25px rgba(34, 197, 94, 0.16);
+}
+
+
+.button-victory:hover:not(:disabled) {
+    background:
+        linear-gradient(
+            180deg,
+            #4ade80,
+            #16a34a
+        );
+}
+
+
+.victory-icon {
+    margin-right: 5px;
+
+    color: #fef08a;
+}
+
+
+/* ==========================================================
+   主催者メニュー
+========================================================== */
+
+.host-panel {
+    border-color: #334155;
+}
+
+
+.host-actions {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+}
+
+
+.host-player-management {
+    margin-top: 26px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #293548;
+}
+
+
+.management-header {
+    margin-bottom: 12px;
+}
+
+
+.management-header h3 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+.management-subtitle {
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.host-participant-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.host-participant-item {
+    width: 100%;
+
+    padding:
+        10px
+        12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    border: 1px solid #334155;
+    border-radius: 10px;
+
+    background: #0d1624;
+}
+
+
+.host-participant-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+}
+
+
+.host-participant-actions .button,
+.host-participant-actions button {
+    min-height: 35px;
+
+    padding:
+        5px
+        9px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* 一時ブロック用 */
+
+.button-suspend {
+    border: 1px solid #92400e;
+
+    background: rgba(245, 158, 11, 0.14);
+
+    color: #facc15;
+}
+
+
+.button-suspend:hover:not(:disabled) {
+    background: rgba(245, 158, 11, 0.24);
+}
+
+
+/* BAN用 */
+
+.button-ban {
+    border: 1px solid #b91c1c;
+
+    background: rgba(185, 28, 28, 0.18);
+
+    color: #f87171;
+}
+
+
+.button-ban:hover:not(:disabled) {
+    background: rgba(185, 28, 28, 0.30);
+}
+
+
+/* 解除用 */
+
+.button-unblock {
+    border: 1px solid #15803d;
+
+    background: rgba(21, 256, 61, 0.15);
+
+    color: #4ade80;
+}
+
+
+.button-unblock:hover:not(:disabled) {
+    background: rgba(21, 256, 61, 0.25);
+}
+
+
+/* ==========================================================
+   戻る
+========================================================== */
+
+.bottom-actions {
+    width: 100%;
+
+    margin-top: 24px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.back-button {
+    min-width: 180px;
+}
+
+
+/* ==========================================================
+   ダイアログ
+========================================================== */
+
+.dialog-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.76);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+
+.dialog {
+    width: min(100%, 420px);
+
+    padding:
+        24px
+        22px;
+
+    border: 1px solid #475569;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #101827,
+            #0c1421
+        );
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.48);
+}
+
+
+.dialog-icon {
+    width: 48px;
+    height: 48px;
+
+    margin:
+        0
+        auto
+        13px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ef4444;
+    border-radius: 50%;
+
+    background: rgba(239, 68, 68, 0.12);
+
+    color: #f87171;
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+.dialog h3 {
+    margin:
+        0
+        0
+        10px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+}
+
+
+.dialog p {
+    margin:
+        0
+        0
+        20px;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.dialog-actions {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 8px;
+}
+
+
+/* ==========================================================
+   PC
+========================================================== */
+
+@media (min-width: 900px) {
+
+    .main-content {
+        padding-top: 34px;
+    }
+
+
+    .panel {
+        padding: 24px;
+    }
+
+
+    .home-panel {
+        padding:
+            28px
+            34px
+            31px;
+        margin: 
+            20px 
+            auto;
+    }
+
+
+    .welcome-section {
+        padding-top: 35px;
+    }
+
+
+    .participant-list {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ==========================================================
+   タブレット
+========================================================== */
+
+@media (max-width: 760px) {
+
+    .host-actions {
+        grid-template-columns: 1fr;
+    }
+
+
+    .host-participant-item {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .host-participant-actions {
+        justify-content: flex-start;
+    }
+
+}
+
+
+/* ==========================================================
+   スマートフォン
+========================================================== */
+
+@media (max-width: 599px) {
+
+    .header-inner {
+        min-height: 62px;
+
+        padding:
+            9px
+            13px;
+    }
+
+
+    .brand-mark {
+        width: 38px;
+        height: 38px;
+
+        flex-basis: 38px;
+
+        border-radius: 10px;
+    }
+
+
+    .brand h1 {
+        font-size: 18px;
+    }
+
+
+    .brand-subtitle {
+        font-size: 8px;
+
+        letter-spacing: 1.6px;
+    }
+
+
+    .main-content {
+        padding:
+            14px
+            11px
+            calc(35px + var(--safe-bottom));
+    }
+
+
+    .welcome-section {
+        padding:
+            24px
+            10px
+            21px;
+    }
+
+
+    .welcome-mark {
+        width: 60px;
+        height: 60px;
+
+        margin-bottom: 13px;
+
+        border-radius: 16px;
+
+        font-size: 18px;
+    }
+
+
+    .welcome-section h2 {
+        font-size: 28px;
+    }
+
+
+    .welcome-subtitle {
+        font-size: 9px;
+
+        letter-spacing: 1.8px;
+    }
+
+
+    .welcome-section p {
+        margin-top: 16px;
+
+        font-size: 13px;
+    }
+
+
+    .mobile-break {
+        display: initial;
+    }
+
+
+    .panel {
+        padding: 16px;
+
+        border-radius: 12px;
+    }
+
+
+    .home-panel {
+        padding:
+            20px
+            16px
+            22px;
+    }
+
+
+    .panel h2 {
+        font-size: 18px;
+    }
+
+
+    .panel-header {
+        margin-bottom: 15px;
+    }
+
+
+    .tournament-form {
+        gap: 14px;
+    }
+
+
+    .form-field input {
+        height: 50px;
+
+        font-size: 16px;
+    }
+
+
+    .large-button {
+        min-height: 50px;
+    }
+
+
+    .or-separator {
+        margin:
+            15px
+            0;
+    }
+
+
+    .tournament-info-panel {
+        padding:
+            20px
+            14px;
+    }
+
+
+    .tournament-title-area h2 {
+        font-size: 25px;
+    }
+
+
+    .tournament-code-block {
+        width: 100%;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+
+    .code-label {
+        width: 100%;
+    }
+
+
+    .tournament-code-block strong {
+        flex: 1;
+
+        font-size: 14px;
+    }
+
+
+    .participant-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    .bracket {
+        margin:
+            0
+            -5px;
+
+        width: calc(100% + 10px);
+    }
+
+
+    .bracket-inner {
+        justify-content: flex-start;
+
+        gap: 25px;
+    }
+
+
+    .bracket-round {
+        min-width: 190px;
+    }
+
+
+    .match-card {
+        width: 190px;
+    }
+
+
+    .my-match-panel {
+        padding: 18px 15px;
+    }
+
+
+    .my-match-info {
+        font-size: 16px;
+    }
+
+
+    .button-victory {
+        width: 100%;
+    }
+
+
+    .host-participant-actions {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        width: 100%;
+    }
+
+
+    .host-participant-actions button {
+        width: 100%;
+    }
+
+
+    .dialog {
+        padding:
+            21px
+            16px;
+    }
+
+}
+
+
+/* ==========================================================
+   小さいスマートフォン
+========================================================== */
+
+@media (max-width: 370px) {
+
+    .main-content {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+
+    .welcome-section h2 {
+        font-size: 25px;
+    }
+
+
+    .tournament-code-block strong {
+        font-size: 12px;
+    }
+
+
+    .host-participant-actions {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dialog-actions {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==========================================================
+   Tournament PC レイアウト調整
+========================================================== */
+
+@media (min-width: 760px) {
+
+    /* ------------------------------------------------------
+       ヘッダー
+       Maydayと同じように左寄せ
+    ------------------------------------------------------ */
+
+    .header-inner {
+        justify-content: flex-start;
+    }
+
+
+    /* ------------------------------------------------------
+       トップ画面全体
+    ------------------------------------------------------ */
+
+    .home-container {
+        width: min(100%, 1000px);
+    }
+
+
+    /* ------------------------------------------------------
+       上部タイトルをコンパクト化
+    ------------------------------------------------------ */
+
+    .welcome-section {
+        padding:
+            22px
+            16px
+            24px;
+    }
+
+    .welcome-mark {
+        width: 58px;
+        height: 58px;
+
+        margin-bottom: 11px;
+
+        border-radius: 15px;
+
+        font-size: 18px;
+    }
+
+    .welcome-section h2 {
+        font-size: 30px;
+    }
+
+    .welcome-subtitle {
+        margin-top: 5px;
+
+        font-size: 10px;
+    }
+
+    .welcome-section p {
+        margin-top: 12px;
+
+        font-size: 13px;
+    }
+
+
+    /* ------------------------------------------------------
+       作成 / 参加を横並び
+    ------------------------------------------------------ */
+
+    #homeScreen .home-container {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        column-gap: 18px;
+
+        align-items: stretch;
+    }
+
+
+    /* ウェルカムは横幅いっぱい */
+
+    #homeScreen .welcome-section {
+        grid-column: 1 / -1;
+    }
+
+
+    /* 作成を左 */
+
+    #createTournamentForm {
+        width: 100%;
+    }
+
+
+    /* ORは中央に小さく表示 */
+
+    #homeScreen .or-separator {
+        display: none;
+    }
+
+
+    /* 2つのパネル */
+
+    #homeScreen .home-panel {
+        margin-bottom: 0;
+
+        padding:
+            22px
+            24px
+            24px;
+    }
+
+
+    /* タイトル */
+
+    #homeScreen .home-panel .panel-header {
+        margin-bottom: 18px;
+    }
+
+
+    /* フォーム */
+
+    #homeScreen .tournament-form {
+        max-width: none;
+    }
+
+
+    /* 入力欄 */
+
+    #homeScreen .form-field input {
+        height: 48px;
+    }
+
+
+    /* ボタン */
+
+    #homeScreen .large-button {
+        min-height: 48px;
+    }
+
+}
+
+/* ==========================================================
+   主催者：勝者指定
+========================================================== */
+
+.match-player-name {
+    min-width: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.host-winner-button {
+    flex-shrink: 0;
+
+    min-height: 30px;
+
+    padding: 5px 9px;
+
+    border: 1px solid #2563eb;
+    border-radius: 7px;
+
+    background: rgba(37, 99, 235, 0.15);
+
+    color: #60a5fa;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.host-winner-button:hover:not(:disabled) {
+    border-color: #3b82f6;
+
+    background: rgba(37, 99, 235, 0.28);
+}
+
+.host-winner-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.match-win-label {
+    flex-shrink: 0;
+
+    color: #4ade80;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================================
+   優勝者
+========================================================== */
+
+.champion-card {
+    width: min(100%, 420px);
+
+    margin: 24px auto 0;
+
+    padding: 20px;
+
+    border: 2px solid #15803d;
+    border-radius: 14px;
+
+    background: rgba(21, 256, 61, 0.14);
+
+    text-align: center;
+}
+
+.champion-label {
+    color: #4ade80;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.champion-name {
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 900;
+}
+
+
+/* ==========================================================
+   自分の試合
+========================================================== */
+
+.my-match-vs {
+    margin: 0 14px;
+
+    color: #60a5fa;
+}
+
+
+/* ==========================================================
+   スマートフォン
+========================================================== */
+
+@media (max-width: 599px) {
+
+    .host-winner-button {
+        min-height: 28px;
+
+        padding: 4px 7px;
+
+        font-size: 9px;
+    }
+
+    .champion-name {
+        font-size: 21px;
+    }
+
+}
+
+/* ==========================================================
+   勝利・勝者決定カラー
+   緑で統一
+========================================================== */
+
+
+/* ----------------------------------------------------------
+   トーナメント表「勝者にする」
+---------------------------------------------------------- */
+
+.host-winner-button {
+    border-color: #15803d;
+
+    background: rgba(34, 197, 94, 0.13);
+
+    color: #4ade80;
+}
+
+.host-winner-button:hover:not(:disabled) {
+    border-color: #22c55e;
+
+    background: rgba(34, 197, 94, 0.24);
+
+    color: #86efac;
+}
+
+
+/* ==========================================================
+   確認ダイアログ
+   勝利系 = 緑
+   危険操作 = 赤
+========================================================== */
+
+
+/* ----------------------------------------------------------
+   勝利系：！マーク
+---------------------------------------------------------- */
+
+.dialog-success .dialog-icon {
+    border-color: #22c55e !important;
+
+    background: rgba(34, 197, 94, 0.14) !important;
+
+    color: #4ade80 !important;
+}
+
+
+/* ----------------------------------------------------------
+   勝利系：決定ボタン
+---------------------------------------------------------- */
+
+.dialog-success #dialogConfirm {
+    border-color: #22c55e !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #22c55e 0%,
+            #15803d 100%
+        ) !important;
+
+    color: #ffffff !important;
+
+    box-shadow:
+        0 5px 18px
+        rgba(34, 197, 94, 0.22) !important;
+}
+
+
+.dialog-success #dialogConfirm:hover:not(:disabled) {
+
+    border-color: #4ade80 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #4ade80 0%,
+            #16a34a 100%
+        ) !important;
+}
+
+
+/* ----------------------------------------------------------
+   危険操作：！マーク
+---------------------------------------------------------- */
+
+.dialog-danger .dialog-icon {
+    border-color: #ef4444 !important;
+
+    background: rgba(239, 68, 68, 0.14) !important;
+
+    color: #f87171 !important;
+}
+
+
+/* ----------------------------------------------------------
+   危険操作：決定ボタン
+---------------------------------------------------------- */
+
+.dialog-danger #dialogConfirm {
+    border-color: #ef4444 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ef4444 0%,
+            #b91c1c 100%
+        ) !important;
+
+    color: #ffffff !important;
+}
+
+
+.dialog-danger #dialogConfirm:hover:not(:disabled) {
+
+    border-color: #f87171 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f87171 0%,
+            #dc2626 100%
+        ) !important;
+}
+
+
+/* ==========================================================
+   参加者のドラッグ＆ドロップ並び替え
+========================================================== */
+
+.host-participant-main {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.host-participant-info {
+    min-width: 0;
+}
+
+.participant-drag-handle {
+    width: 48px;
+    min-width: 48px;
+    min-height: 42px;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #0b1422;
+    color: #94a3b8;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.participant-drag-handle:hover {
+    border-color: #3b82f6;
+    color: #93c5fd;
+}
+
+.participant-drag-handle:active {
+    cursor: grabbing;
+}
+
+.drag-order-number {
+    min-width: 14px;
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.drag-grip {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.host-participant-item.is-sortable {
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+.host-participant-item.is-dragging {
+    position: relative;
+    z-index: 3;
+    border-color: #3b82f6;
+    background: #111c2c;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+    opacity: 0.92;
+    transform: scale(1.01);
+}
+
+.host-participant-list.is-reordering {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.host-participant-list.is-saving-order {
+    pointer-events: none;
+    opacity: 0.72;
+}
+
+@media (max-width: 599px) {
+    .host-participant-item.is-sortable {
+        align-items: stretch;
+    }
+
+    .host-participant-main {
+        width: 100%;
+    }
+
+    .participant-drag-handle {
+        width: 46px;
+        min-width: 46px;
+        min-height: 46px;
+    }
+}
+
+/* ==========================================================
+   参加者並び替え
+========================================================== */
+
+/*
+   参加者の左側
+   順番 + 名前 + ステータス
+*/
+
+.host-participant-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+    flex: 1;
+}
+
+
+.host-participant-info {
+    min-width: 0;
+    flex: 1;
+}
+
+
+/* ==========================================================
+   ドラッグ可能な参加者
+========================================================== */
+
+.host-participant-item.reorder-enabled {
+    position: relative;
+
+    transition:
+        transform 0.16s ease,
+        opacity 0.16s ease,
+        border-color 0.16s ease,
+        background-color 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+
+/*
+   マウスを乗せた時
+*/
+
+.host-participant-item.reorder-enabled:hover {
+    border-color: rgba(74, 144, 255, 0.55);
+}
+
+
+/* ==========================================================
+   ドラッグハンドル
+========================================================== */
+
+.participant-drag-handle {
+    appearance: none;
+    -webkit-appearance: none;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-width: 64px;
+    min-height: 44px;
+
+    padding: 7px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: inherit;
+
+    cursor: grab;
+
+    /*
+       スマホでページスクロールではなく
+       ドラッグとして扱えるようにする
+    */
+    touch-action: none;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.participant-drag-handle:hover {
+    background: rgba(74, 144, 255, 0.12);
+    border-color: rgba(74, 144, 255, 0.55);
+}
+
+
+.participant-drag-handle:active {
+    cursor: grabbing;
+
+    transform: scale(0.97);
+}
+
+
+/* ==========================================================
+   順番番号
+========================================================== */
+
+.participant-order-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 22px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    opacity: 0.75;
+}
+
+
+/* ==========================================================
+   ☰ アイコン
+========================================================== */
+
+.participant-drag-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    opacity: 0.8;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================
+   大会開始後の順番表示
+========================================================== */
+
+.participant-order-static {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    opacity: 0.65;
+}
+
+
+/* ==========================================================
+   ドラッグ中の参加者
+========================================================== */
+
+.host-participant-item.participant-dragging {
+    z-index: 20;
+
+    opacity: 0.68;
+
+    border-color: rgba(74, 144, 255, 0.9);
+
+    background: rgba(74, 144, 255, 0.12);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.24);
+
+    transform: scale(1.015);
+}
+
+
+/*
+   ドラッグ中はハンドルを強調
+*/
+
+.host-participant-item.participant-dragging
+.participant-drag-handle {
+    cursor: grabbing;
+
+    border-color: rgba(74, 144, 255, 0.9);
+
+    background: rgba(74, 144, 255, 0.18);
+}
+
+
+/* ==========================================================
+   リストドラッグ中
+========================================================== */
+
+.participant-list-reordering {
+    position: relative;
+}
+
+
+/*
+   他の項目が移動した時に少し滑らかにする
+*/
+
+.participant-list-reordering
+.host-participant-item:not(.participant-dragging) {
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        background-color 0.15s ease;
+}
+
+
+/* ==========================================================
+   並び順保存中
+========================================================== */
+
+.participant-order-saving {
+    pointer-events: none;
+}
+
+
+/*
+   保存中はドラッグハンドルを少し薄くする
+*/
+
+.participant-order-saving
+.participant-drag-handle {
+    opacity: 0.45;
+
+    cursor: wait;
+}
+
+
+/* ==========================================================
+   ドラッグ中のページ
+========================================================== */
+
+body.participant-drag-active {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/*
+   PCでドラッグ中に
+   テキスト選択カーソルにならないようにする
+*/
+
+body.participant-drag-active,
+body.participant-drag-active * {
+    cursor: grabbing;
+}
+
+
+/* ==========================================================
+   主催者操作ボタン
+========================================================== */
+
+.host-participant-actions {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ==========================================================
+   スマートフォン
+========================================================== */
+
+@media (max-width: 700px) {
+
+    /*
+       スマホでは参加者情報と操作ボタンを
+       上下に分ける
+    */
+
+    .host-participant-item {
+        align-items: stretch;
+        gap: 12px;
+    }
+
+
+    .host-participant-main {
+        width: 100%;
+        gap: 10px;
+    }
+
+
+    /*
+       指で押しやすいサイズ
+    */
+
+    .participant-drag-handle {
+        min-width: 60px;
+        min-height: 48px;
+
+        padding: 8px 9px;
+    }
+
+
+    .participant-drag-icon {
+        font-size: 21px;
+    }
+
+
+    /*
+       BAN等の操作ボタン
+    */
+
+    .host-participant-actions {
+        width: 100%;
+
+        justify-content: flex-end;
+    }
+
+
+    .host-participant-actions .button {
+        min-height: 42px;
+    }
+
+}
+
+
+/* ==========================================================
+   かなり狭いスマートフォン
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .participant-drag-handle {
+        min-width: 56px;
+
+        gap: 6px;
+    }
+
+
+    .participant-order-number {
+        min-width: 18px;
+
+        font-size: 12px;
+    }
+
+
+    .participant-drag-icon {
+        font-size: 19px;
+    }
+
+
+    .host-participant-actions {
+        gap: 6px;
+    }
+
+}
+
+/* ==========================================================
+   対戦カード作成
+========================================================== */
+
+.matchup-builder-description {
+    margin-bottom: 22px;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.7;
+}
+
+
+/* ----------------------------------------------------------
+   参加者エリア
+---------------------------------------------------------- */
+
+.matchup-player-pool {
+    margin-bottom: 20px;
+}
+
+
+.matchup-section-title {
+    margin-bottom: 10px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+/* ----------------------------------------------------------
+   参加者一覧
+---------------------------------------------------------- */
+
+.matchup-participant-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    min-height: 54px;
+
+    padding: 10px;
+
+    border: 1px solid #293548;
+    border-radius: 10px;
+
+    background: #0b1422;
+}
+
+
+/* ----------------------------------------------------------
+   参加者カード
+---------------------------------------------------------- */
+
+.matchup-participant {
+    min-width: 120px;
+    min-height: 42px;
+
+    padding:
+        8px
+        11px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border: 1px solid #334155;
+    border-radius: 9px;
+
+    background: #111c2c;
+
+    color: #f1f5f9;
+
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.matchup-participant-grip {
+    flex-shrink: 0;
+
+    color: #60a5fa;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+.matchup-participant-name {
+    min-width: 0;
+
+    overflow: hidden;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ----------------------------------------------------------
+   対戦カード追加ボタン
+---------------------------------------------------------- */
+
+.matchup-add-button {
+    width: 100%;
+
+    margin-bottom: 16px;
+}
+
+
+/* ----------------------------------------------------------
+   対戦カード一覧
+---------------------------------------------------------- */
+
+.matchup-card-list {
+    width: 100%;
+}
+
+
+/* ----------------------------------------------------------
+   スマートフォン
+---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .matchup-participant-list {
+        padding: 8px;
+    }
+
+
+    .matchup-participant {
+        min-width: 0;
+
+        flex:
+            1
+            1
+            calc(50% - 4px);
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   かなり狭いスマートフォン
+---------------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .matchup-participant {
+        flex-basis: 100%;
+    }
+
+}
+/* ==========================================================
+   対戦カード
+========================================================== */
+
+.matchup-card {
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.matchup-card + .matchup-card {
+    margin-top: 12px;
+}
+
+.matchup-card-number {
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.6;
+}
+
+.matchup-card-players {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+}
+
+.matchup-slot {
+    min-height: 54px;
+    padding: 12px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px dashed rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+
+    font-weight: 700;
+    text-align: center;
+}
+
+.matchup-vs {
+    font-size: 13px;
+    font-weight: 800;
+    opacity: 0.65;
+}
+
+
+/* ----------------------------------------------------------
+   スマホ
+---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .matchup-card {
+        padding: 14px;
+    }
+
+    .matchup-card-players {
+        gap: 8px;
+    }
+
+    .matchup-slot {
+        min-height: 48px;
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    .matchup-vs {
+        font-size: 11px;
+    }
+
+}
+/* ==========================================================
+   対戦カード削除ボタン
+========================================================== */
+
+.matchup-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.matchup-card-header .matchup-card-number {
+    margin-bottom: 0;
+}
+
+.matchup-delete-button {
+    width: 30px;
+    height: 30px;
+    padding: 0 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 80, 80, 0.35);
+    border-radius: 8px;
+
+    background: rgba(255, 70, 70, 0.10);
+    color: #ff7070;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.matchup-delete-button:hover {
+    background: rgba(255, 70, 70, 0.20);
+    border-color: rgba(255, 80, 80, 0.65);
+    transform: scale(1.05);
+}
+
+.matchup-delete-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+/* ==========================================================
+   対戦カード ドロップ枠
+========================================================== */
+
+.matchup-slot {
+    position: relative;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.matchup-slot-name {
+    pointer-events: none;
+}
+
+
+/* ----------------------------------------------------------
+   ドラッグ中に配置可能であることを表示
+---------------------------------------------------------- */
+
+.matchup-slot.drop-available {
+    border-color: rgba(70, 150, 255, 0.65);
+    background: rgba(70, 150, 255, 0.06);
+}
+
+
+/* ----------------------------------------------------------
+   現在ドロップしようとしている枠
+---------------------------------------------------------- */
+
+.matchup-slot.drop-target {
+    border-color: rgba(70, 150, 255, 1);
+    background: rgba(70, 150, 255, 0.16);
+
+    box-shadow:
+        0 0 0 2px rgba(70, 150, 255, 0.18);
+
+    transform: scale(1.02);
+}
+/* ==========================================================
+   対戦カード 参加者ドラッグ
+========================================================== */
+
+.matchup-participant {
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+}
+
+.matchup-participant:active {
+    cursor: grabbing;
+}
+
+
+/* ----------------------------------------------------------
+   マウス・指についてくる参加者カード
+---------------------------------------------------------- */
+
+.matchup-drag-ghost {
+    position: fixed;
+    z-index: 99999;
+
+    width: max-content;
+    max-width: 240px;
+
+    pointer-events: none;
+
+    margin: 0;
+
+    opacity: 0.92;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+/* ----------------------------------------------------------
+   ドラッグ中
+---------------------------------------------------------- */
+
+body.matchup-drag-active {
+    user-select: none;
+    cursor: grabbing;
+}
+
+body.matchup-drag-active
+.matchup-slot {
+    cursor: grabbing;
+}
+/* ==========================================================
+   参加者数表示
+========================================================== */
+
+.matchup-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+.matchup-section-header .matchup-section-title {
+    margin-bottom: 0;
+}
+
+
+.management-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+/* ==========================================================
+   参加者管理：名前 + ステータス横並び
+========================================================== */
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   参加者管理：レスポンシブ横並び
+========================================================== */
+
+.host-participant-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 8px;
+}
+
+
+/* 参加者カード */
+.host-participant-item {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 10px 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+    justify-content: space-between;
+
+    gap: 9px;
+}
+
+
+/* 名前 + 参加状態 */
+.host-participant-name-row {
+    display: flex;
+
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* 名前 */
+.host-participant-name-row .participant-name {
+    min-width: 0;
+}
+
+
+/* 参加中 / ブロック中 / BAN */
+.host-participant-name-row .participant-status {
+    flex-shrink: 0;
+}
+
+
+/* 一時ブロック・BANなど */
+.host-participant-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+
+/* スマホ */
+@media (max-width: 599px) {
+
+    .host-participant-list {
+        grid-template-columns:
+            repeat(
+                auto-fit,
+                minmax(180px, 1fr)
+            );
+    }
+
+}
+
+/* ==========================================================
+   参加者管理：操作ボタンを右端へ
+========================================================== */
+
+
+
+
+/* 名前 + ステータス側 */
+
+
+
+/* 一時ブロック・BAN側 */
+
+
+/* ==========================================================
+   参加者管理：操作ボタンを右端へ
+========================================================== */
+
+.host-participant-item {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+/* 名前 + ステータス側 */
+.host-participant-main {
+    min-width: 0;
+    flex: 1;
+}
+
+
+/* 一時ブロック・BAN側 */
+.host-participant-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    flex-shrink: 0;
+
+    gap: 6px;
+
+    margin-left: auto;
+}
+
+/* ==========================================================
+   参加者管理：名前・ステータス・操作ボタン
+========================================================== */
+
+.host-participant-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+/* 名前側の領域 */
+
+
+
+/* 名前 + 参加中 */
+.host-participant-name-row {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    gap: 8px;
+}
+
+
+/* 名前 */
+.host-participant-name-row .participant-name {
+    flex: 0 1 auto;
+}
+
+
+/* 参加中 */
+.host-participant-name-row .participant-status {
+    flex: 0 0 auto;
+
+    margin: 0;
+}
+
+
+/* 一時ブロック + BAN */
+.host-participant-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex: 0 0 auto;
+
+    gap: 6px;
+
+    margin-left: auto;
+}
+
+/* ==========================================================
+   参加者管理：名前を完全表示
+========================================================== */
+
+/* カードの最低横幅を広げる */
+.host-participant-list {
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(360px, 1fr)
+        );
+}
+
+
+/* カード */
+.host-participant-item {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* 名前 + ステータス側 */
+.host-participant-main {
+    flex: 0 0 auto;
+    min-width: max-content;
+}
+
+
+/* 名前と参加中 */
+.host-participant-name-row {
+    display: flex;
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    gap: 8px;
+
+    width: max-content;
+}
+
+
+/* 名前は縮ませない */
+.host-participant-name-row .participant-name {
+    flex: 0 0 auto;
+
+    width: auto;
+    min-width: max-content;
+
+    white-space: nowrap;
+}
+
+
+/* 参加中も縮ませない */
+.host-participant-name-row .participant-status {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
+
+    margin: 0;
+}
+
+
+/* ボタンは右端 */
+.host-participant-actions {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    margin-left: auto;
+
+    white-space: nowrap;
+}
+/* ==========================================================
+   参加者管理：3～30文字の名前に完全対応
+========================================================== */
+
+/* 参加者一覧 */
+.host-participant-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(min(100%, 360px), 1fr)
+        );
+
+    gap: 8px;
+}
+
+
+/* 参加者カード */
+.host-participant-item {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 20px;
+
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   左側：名前 + ステータス
+========================================================== */
+
+.host-participant-main {
+    flex: 1 1 auto;
+
+    min-width: 0;
+}
+
+
+.host-participant-info {
+    min-width: 0;
+    width: 100%;
+}
+
+
+/* 名前 + 参加中 */
+.host-participant-name-row {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    column-gap: 8px;
+    row-gap: 5px;
+}
+
+
+/* 名前 */
+.host-participant-name-row .participant-name {
+    flex: 0 1 auto;
+
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+
+    white-space: normal;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+
+    line-height: 1.4;
+}
+
+
+/* 参加中 / ブロック中 / BAN */
+.host-participant-name-row .participant-status {
+    flex: 0 0 auto;
+
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   右側：操作ボタン
+========================================================== */
+
+.host-participant-actions {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+
+    gap: 6px;
+
+    margin-left: auto;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   カードが狭い場合
+========================================================== */
+
+@media (max-width: 760px) {
+
+    .host-participant-item {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 12px;
+    }
+
+
+    .host-participant-actions {
+        width: 100%;
+
+        justify-content: flex-end;
+
+        margin-left: 0;
+    }
+
+}
+
+
+/* ==========================================================
+   スマートフォン
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .host-participant-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    .host-participant-item {
+        padding: 10px 12px;
+    }
+
+}
+
+/* ==========================================================
+   対戦カード作成：参加者 + 追加ボタンをスクロール追従
+========================================================== */
+
+.matchup-sticky-tools {
+    position: sticky;
+    top: 12px;
+    z-index: 20;
+
+    margin-bottom: 16px;
+    padding: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+
+    background: rgba(10, 18, 30, 0.96);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.24);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* sticky枠内なので、
+   追加ボタン下の余白は不要 */
+.matchup-sticky-tools .matchup-add-button {
+    margin-bottom: 0;
+}
+
+
+/* スマホでは画面上端との隙間を少し小さく */
+@media (max-width: 600px) {
+
+    .matchup-sticky-tools {
+        top: 6px;
+
+        padding: 10px;
+    }
+
+}
+
+/* ==========================================================
+   トースト通知
+========================================================== */
+
+#message {
+    position: fixed;
+
+    top: 18px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(-20px);
+
+    z-index: 99999;
+
+    width: max-content;
+    max-width: calc(100vw - 32px);
+
+    margin: 0;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* 表示中 */
+#message:not(.hidden) {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* 成功 */
+#message.success {
+    z-index: 99999;
+}
+
+
+/* エラー */
+#message.error {
+    z-index: 99999;
+}
+
+
+/* スマートフォン */
+@media (max-width: 600px) {
+
+    #message {
+        top: 10px;
+
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+
+        text-align: center;
+    }
+
+}
+
+/* ==========================================================
+   トースト：フェードイン / フェードアウト
+========================================================== */
+
+#message.toast-preparing {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(-20px);
+}
+
+
+#message.toast-hiding {
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(-20px);
+}
+/* ==========================================================
+   対戦カード配置済み参加者
+========================================================== */
+
+.matchup-participant-assigned {
+    opacity: 0.42;
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+
+/* 配置済みでもドラッグできることが分かるようにする */
+.matchup-participant-assigned {
+    cursor: grab;
+}
+
+
+.matchup-participant-assigned:active {
+    cursor: grabbing;
+}
+/* ==========================================================
+   MATCH並び替えハンドル
+========================================================== */
+
+.matchup-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+
+.matchup-drag-handle {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: transparent;
+    color: inherit;
+
+    font-size: 18px;
+    line-height: 1;
+
+    cursor: grab;
+
+    touch-action: none;
+    user-select: none;
+
+    opacity: 0.65;
+
+    transition:
+        opacity 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.matchup-drag-handle:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+.matchup-drag-handle:active {
+    cursor: grabbing;
+    opacity: 1;
+}
+/* ==========================================================
+   MATCHカード ドラッグ
+========================================================== */
+
+.matchup-card-drag-ghost {
+    position: fixed !important;
+
+    z-index: 100000;
+
+    width: min(420px, calc(100vw - 32px));
+
+    margin: 0;
+
+    pointer-events: none;
+
+    opacity: 0.82;
+
+    transform: none;
+
+    box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.40);
+}
+
+
+.matchup-card-drop-available {
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.matchup-card-drop-target {
+    border-color: rgba(70, 150, 255, 1);
+
+    background:
+        rgba(70, 150, 255, 0.12);
+
+    transform:
+        scale(1.01);
+}
+
+.matchup-card-drop-before::before {
+    top: -7px;
+}
+
+
+.matchup-card-drop-after::after {
+    bottom: -7px;
+}
+/* ==========================================================
+   MATCH並び替え 移動先表示
+========================================================== */
+
+.matchup-card-drop-before,
+.matchup-card-drop-after {
+    border-color: rgba(70, 150, 255, 1);
+
+    background:
+        rgba(70, 150, 255, 0.12);
+
+    box-shadow:
+        0 0 0 2px
+        rgba(70, 150, 255, 0.18);
+
+    transform:
+        scale(1.01);
+}
+
+/* ==========================================================
+   MATCH配置解除 ドロップエリア
+========================================================== */
+
+.matchup-participant-list.matchup-return-available {
+    outline: 2px dashed rgba(70, 150, 255, 0.55);
+    outline-offset: 6px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(70, 150, 255, 0.05);
+
+    transition:
+        outline-color 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.matchup-participant-list.matchup-return-target {
+    outline-color:
+        rgba(70, 150, 255, 1);
+
+    background:
+        rgba(70, 150, 255, 0.15);
+}
+
+/* ==========================================================
+   MATCH設定状態
+========================================================== */
+
+/* 片側だけ = BYE */
+.matchup-card-bye {
+    border-color:
+        rgba(255, 190, 70, 0.55);
+}
+
+
+/* 両方XX = 未設定 */
+.matchup-card-empty {
+    border-color:
+        rgba(255, 90, 90, 0.65);
+
+    background:
+        rgba(255, 90, 90, 0.035);
+}
+
+/* ==========================================================
+   MATCHタイトル カーソル
+========================================================== */
+
+.matchup-card-title {
+    cursor: grab;
+}
+
+.matchup-card-title:active {
+    cursor: grabbing;
+}
+
+/* ==========================================================
+   空いている対戦枠の案内文字
+========================================================== */
+.matchup-card-empty .matchup-slot-name,
+.matchup-card-bye .matchup-slot:not(.matchup-slot-assigned) .matchup-slot-name {
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 400;
+}
+
+/* ==========================================================
+   大会再開ボタン
+========================================================== */
+
+.button-success {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: #ffffff;
+}
+
+.button-success:hover:not(:disabled) {
+    background: #15803d;
+    border-color: #15803d;
+}
+
+.button-success:active:not(:disabled) {
+    background: #166534;
+    border-color: #166534;
+}
+
+/* ==========================================================
+   大会の終了と再開
+========================================================== */
+
+.tournament-lifecycle-panel {
+    margin-top: 18px;
+    padding: 14px;
+
+    border: 1px solid #475569;
+    border-radius: 10px;
+}
+
+.tournament-lifecycle-heading {
+    margin-bottom: 14px;
+}
+
+.tournament-lifecycle-title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.tournament-lifecycle-subtitle {
+    margin-top: 3px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    opacity: 0.65;
+}
+
+.tournament-lifecycle-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.tournament-lifecycle-actions .button {
+    width: 100%;
+}
+
+
+/* スマートフォン */
+
+@media (max-width: 600px) {
+
+    .tournament-lifecycle-actions {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==========================================================
+   あなたの大会
+========================================================== */
+
+/* 現在進行中の大会 */
+.my-tournament-section-heading {
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.my-tournament-section-title {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.my-tournament-section-subtitle {
+    margin-top: 3px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    opacity: 0.65;
+}
+
+
+/* ==========================================================
+   大会カード一覧
+========================================================== */
+
+.my-tournament-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(230px, 1fr)
+        );
+
+    gap: 14px;
+
+    width: 100%;
+}
+
+
+/* 大会カード */
+.my-tournament-item {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 145px;
+
+    padding: 18px;
+
+    border: 1px solid #475569;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+
+/* 大会情報 */
+.my-tournament-info {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* 大会名 */
+.my-tournament-name {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* 主催者 ・ 開催前など */
+.my-tournament-meta {
+    font-size: 13px;
+
+    opacity: 0.75;
+}
+
+
+/* 大会ページへ */
+.my-tournament-open-button {
+    width: 100%;
+
+    margin-top: 16px;
+}
+
+
+/* ==========================================================
+   終了した大会を表示
+========================================================== */
+
+.show-archived-tournaments-area {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+
+.show-archived-tournaments-button {
+    padding: 8px 18px;
+
+    border: 0;
+    background: transparent;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #60a5fa;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+    border-color: #475569;
+}
+
+
+.show-archived-tournaments-button:hover {
+    opacity: 0.8;
+}
+
+
+.show-archived-tournaments-button:active {
+    transform: translateY(1px);
+}
+
+
+/* スマートフォン */
+@media (max-width: 600px) {
+
+    .my-tournament-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==========================================================
+   あなたの大会 PC幅調整
+========================================================== */
+
+@media (min-width: 760px) {
+    #myTournamentsPanel {
+        grid-column: 1 / -1;
+        width: 100%;
+        /* margin-left: 0; */
+        /* margin-right: 0; */
+        width: 100%;
+        max-width: 1000px;
+    }
+}
+
+/* ==========================================================
+   対戦カード一覧
+   MATCH 6個分まで表示して、それ以降はスクロール
+========================================================== */
+
+.matchup-card-list {
+    /*
+       MATCHカード6個分を表示する高さ。
+       実際のカード高さに合わせて調整可能。
+    */
+    max-height: 720px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /*
+       スクロールバーとMATCHの間に少し余白
+    */
+    padding-right: 8px;
+
+    /*
+       スクロールを滑らかに
+    */
+    scroll-behavior: smooth;
+
+    /*
+       スマホの慣性スクロール
+    */
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* ----------------------------------------------------------
+   スクロールバー
+---------------------------------------------------------- */
+
+.matchup-card-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+.matchup-card-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+
+    border-radius: 999px;
+}
+
+
+.matchup-card-list::-webkit-scrollbar-thumb {
+    background: rgba(100, 140, 255, 0.35);
+
+    border-radius: 999px;
+}
+
+
+.matchup-card-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 140, 255, 0.55);
+}
+
+
+/* ==========================================================
+   新方式トーナメント作成 UI（試作）
+========================================================== */
+#matchupBuilder { display:none !important; }
+.bracket-setup-panel{overflow:hidden}.bracket-setup-controls{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin-bottom:12px}.bracket-size-field{display:flex;flex-direction:column;gap:6px;color:var(--text-soft);font-size:13px;font-weight:800}.bracket-size-field select{height:44px;min-width:110px;padding:0 12px;border:1px solid #475569;border-radius:9px;background:#080f1b;color:#fff;font:inherit}.bracket-setup-note{margin-bottom:14px;padding:10px 12px;border:1px solid #334155;border-radius:9px;background:#0b1422;color:var(--text-muted);font-size:12px;line-height:1.7}.bracket-setup-player-pool{padding:14px;border:1px solid #334155;border-radius:11px;background:#0b1422}.bracket-setup-pool-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.bracket-setup-pool-list{display:flex;flex-wrap:wrap;gap:8px}.bracket-setup-player{padding:9px 12px;border:1px solid #475569;border-radius:9px;background:#111c2c;color:#e2e8f0;font-weight:800;cursor:grab;user-select:none}.bracket-setup-player.is-assigned{opacity:.48}.bracket-setup-player.is-suspended{border-color:#92400e;background:rgba(245,158,11,.14);color:#facc15}.bracket-setup-dragging,.bracket-setup-dragging *{cursor:grabbing!important}.bracket-setup-canvas{margin-top:16px;overflow:auto;padding:14px;border:1px solid #293548;border-radius:12px;background:#080f1b}.bracket-setup-mode-label{margin-bottom:12px;color:#64748b;font-size:11px;font-weight:900;letter-spacing:1px}.bracket-setup-standard{display:flex;align-items:center;gap:44px;min-width:max-content}.bracket-setup-centered{display:grid;grid-template-columns:minmax(210px,1fr) 150px minmax(210px,1fr);align-items:center;gap:32px;min-width:680px}.bracket-setup-side{display:flex;flex-direction:column;gap:8px}.bracket-setup-side-right{align-items:stretch}.bracket-setup-center{display:flex;align-items:center;justify-content:center;min-height:100%}.bracket-setup-champion,.bracket-setup-finish{padding:13px 18px;border:1px solid #f59e0b;border-radius:10px;background:rgba(245,158,11,.10);color:#facc15;font-weight:900;text-align:center}.bracket-setup-slot{min-width:190px;min-height:48px;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px dashed #475569;border-radius:9px;background:#0d1624;color:#64748b;font-weight:800;cursor:pointer}.bracket-setup-slot.is-filled{border-style:solid;color:#e2e8f0}.bracket-setup-slot.is-seed{border:1px solid #b7791f;background:rgba(245,158,11,.13);color:#fde68a}.seed-badge{padding:3px 7px;border-radius:999px;background:rgba(245,158,11,.20);color:#facc15;font-size:10px;white-space:nowrap}.bracket-setup-slot.is-bye{flex-direction:column;justify-content:center;border:1px solid #2563eb;background:rgba(37,99,235,.11);color:#93c5fd}.bye-main{font-size:14px;letter-spacing:1.5px}.bracket-setup-slot.is-bye small{font-size:10px;color:#60a5fa}.bracket-setup-slot:nth-child(2n){margin-bottom:12px}
+@media(max-width:700px){.bracket-setup-centered{min-width:620px;gap:20px}.bracket-setup-slot{min-width:165px}.bracket-setup-controls .button{flex:1 1 150px}}
+
+
+/* ==========================================================
+   AUTO BRACKET SETUP v2
+========================================================== */
+.bulk-participant-box{margin-bottom:16px;padding:14px;border:1px solid #334155;border-radius:12px;background:#0b1422}.bulk-participant-head,.bulk-participant-actions{display:flex;align-items:center;justify-content:space-between;gap:12px}.bulk-participant-help,.bulk-participant-limit{margin-top:4px;color:var(--text-muted);font-size:12px}.bulk-participant-box textarea{width:100%;box-sizing:border-box;margin:12px 0 10px;padding:12px 14px;resize:vertical;border:1px solid #475569;border-radius:10px;background:#080f1b;color:#e2e8f0;font:inherit;line-height:1.6;outline:none}.bulk-participant-box textarea:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)}.bracket-auto-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}.bracket-auto-summary>div{padding:12px;border:1px solid #334155;border-radius:10px;background:#0b1422}.bracket-auto-summary span{display:block;margin-bottom:4px;color:#94a3b8;font-size:11px;font-weight:800}.bracket-auto-summary strong{font-size:18px;color:#f8fafc}.bracket-setup-controls{justify-content:flex-end}.bracket-setup-empty{padding:38px 20px;text-align:center;color:#64748b}.auto-bracket{display:flex;align-items:stretch;gap:52px;min-width:max-content;padding:8px 16px 22px}.auto-bracket-centered{gap:30px}.bracket-half{display:flex;gap:52px;align-items:stretch}.bracket-half-right{flex-direction:row}.bracket-round-column{display:flex;flex-direction:column;min-width:205px}.bracket-round-title{height:28px;margin-bottom:10px;color:#94a3b8;font-size:11px;font-weight:900;letter-spacing:.8px;text-align:center}.bracket-round-matches{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:18px}.auto-match{position:relative;display:flex;flex-direction:column;gap:4px}.auto-match::after{content:"";position:absolute;top:50%;right:-27px;width:27px;border-top:2px solid #475569}.auto-match.mirror::after{right:auto;left:-27px}.future-match{min-height:98px;justify-content:center}.future-slot{min-height:42px;padding:10px 12px;display:flex;align-items:center;border:1px dashed #334155;border-radius:8px;background:#0d1624;color:#64748b;font-size:12px;font-weight:800}.match-connector-stem{position:absolute;right:-27px;top:25%;height:50%;border-right:2px solid #475569}.mirror .match-connector-stem{right:auto;left:-27px;border-right:0;border-left:2px solid #475569}.bracket-round-column:not(:first-child) .auto-match::before{content:"";position:absolute;top:50%;left:-26px;width:26px;border-top:2px solid #475569}.bracket-half-right .bracket-round-column .auto-match::before{left:auto;right:-26px}.bracket-center-final{min-width:190px;display:flex;flex-direction:column;justify-content:center;align-items:center}.bracket-final-match{width:100%;padding:10px;box-sizing:border-box;border:1px solid #475569;border-radius:10px;background:#0d1624;text-align:center}.bracket-final-match div{padding:9px;color:#94a3b8;font-size:12px;font-weight:800}.bracket-final-match span{color:#64748b;font-size:10px}.bracket-champion-box,.bracket-winner-box{margin-top:18px;padding:12px 18px;border:1px solid #f59e0b;border-radius:10px;background:rgba(245,158,11,.1);color:#facc15;font-weight:900;text-align:center}.bracket-winner-column{justify-content:center}.bracket-setup-drag-ghost{position:fixed;left:0;top:0;z-index:99999;pointer-events:none;min-width:150px;padding:10px 14px;border:1px solid #60a5fa;border-radius:9px;background:#172033;color:#fff;font-weight:900;box-shadow:0 14px 35px rgba(0,0,0,.42);opacity:.96;will-change:transform}.bracket-setup-slot.is-drop-target{border-color:#60a5fa!important;box-shadow:0 0 0 3px rgba(59,130,246,.18);background:rgba(37,99,235,.13)}.bracket-setup-player,.bracket-setup-slot[data-setup-participant-id]{touch-action:none}.bracket-setup-canvas{overscroll-behavior:contain}.bracket-setup-slot:nth-child(2n){margin-bottom:0}
+@media(max-width:700px){.bracket-auto-summary{grid-template-columns:1fr}.bulk-participant-actions{align-items:stretch;flex-direction:column}.bulk-participant-actions .button{width:100%}.auto-bracket,.bracket-half{gap:42px}.bracket-round-column{min-width:170px}.bracket-center-final{min-width:160px}}
+
+
+/* スキップ通知：クリックするまで表示 */
+.message.toast-click-to-close {
+    cursor: pointer;
+}
+
+/* ==========================================================
+   2026-10-04 FIX: clickable skip toast / header / bracket lines
+========================================================== */
+
+/* クリック必須通知だけ pointer-events を戻す */
+#message.toast-click-to-close {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* ヘッダーはページと一緒にスクロールさせる */
+.app-header {
+    position: relative;
+    top: auto;
+}
+
+/*
+   自動トーナメントの接続線
+   各MATCHの上下スロットから横線を出し、縦線で結合して、
+   その中央から次ラウンドへ伸ばす。
+*/
+.auto-bracket .auto-match {
+    --connector-half-gap: 26px;
+}
+
+.auto-bracket .bracket-setup-slot,
+.auto-bracket .future-slot {
+    position: relative;
+}
+
+/* 以前の「中央からいきなりT字」になる線をリセット */
+.auto-bracket .auto-match::after,
+.auto-bracket .auto-match::before {
+    content: none;
+}
+
+/* 左→右側：上下の選手枠から結合点まで */
+.auto-bracket .auto-match:not(.mirror) > .bracket-setup-slot::after,
+.auto-bracket .auto-match:not(.mirror) > .future-slot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: calc(-1 * var(--connector-half-gap));
+    width: var(--connector-half-gap);
+    border-top: 2px solid #475569;
+}
+
+/* 左→右側：上下をつなぐ縦線 */
+.auto-bracket .auto-match:not(.mirror) > .match-connector-stem {
+    right: calc(-1 * var(--connector-half-gap));
+    top: 25%;
+    height: 50%;
+    border-right: 2px solid #475569;
+    border-left: 0;
+}
+
+/* 左→右側：結合点の中央から次ラウンド方向へ */
+.auto-bracket .auto-match:not(.mirror) > .match-connector-stem::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: var(--connector-half-gap);
+    border-top: 2px solid #475569;
+}
+
+/* 右→左側は完全に鏡像 */
+.auto-bracket .auto-match.mirror > .bracket-setup-slot::after,
+.auto-bracket .auto-match.mirror > .future-slot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(-1 * var(--connector-half-gap));
+    width: var(--connector-half-gap);
+    border-top: 2px solid #475569;
+}
+
+.auto-bracket .auto-match.mirror > .match-connector-stem {
+    left: calc(-1 * var(--connector-half-gap));
+    right: auto;
+    top: 25%;
+    height: 50%;
+    border-left: 2px solid #475569;
+    border-right: 0;
+}
+
+.auto-bracket .auto-match.mirror > .match-connector-stem::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: var(--connector-half-gap);
+    border-top: 2px solid #475569;
+}
+
+/* 最後の列から「優勝」の外側へ不要な線を出さない */
+.auto-bracket-standard .future-round-column:last-of-type .match-connector-stem::after {
+    width: 26px;
+}
+
+/* 初戦の外側には線を作らない（接続線は勝ち上がる方向だけ） */
+.auto-bracket .first-round-column .auto-match::before {
+    content: none !important;
+}
+
+/* ==========================================================
+   2026-10-04 FIX v2: 正確なブラケット線 / 不透明スキップ通知
+========================================================== */
+/* 旧CSS接続線は完全に無効化。JSでMATCH中心同士をSVG接続する。 */
+.auto-bracket .auto-match::before,
+.auto-bracket .auto-match::after,
+.auto-bracket .bracket-setup-slot::after,
+.auto-bracket .future-slot::after,
+.auto-bracket .match-connector-stem,
+.auto-bracket .match-connector-stem::after {
+    display: none !important;
+    content: none !important;
+}
+.auto-bracket { position: relative; }
+.auto-bracket > *:not(.bracket-connection-layer) { position: relative; z-index: 1; }
+.bracket-connection-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+.bracket-connection-path {
+    fill: none;
+    stroke: #64748b;
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+}
+
+/* スキップあり通知は透過なし。追加0人=赤、1人以上追加=オレンジ */
+#message.toast-click-to-close.error {
+    background: #991b1b !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+    opacity: 1;
+}
+#message.toast-click-to-close.warning {
+    background: #9a5b08 !important;
+    border-color: #f59e0b !important;
+    color: #ffffff !important;
+    opacity: 1;
+}
+
+/* ==========================================================
+   2026-10-04 FIX v3: 等間隔ブラケット / 一括追加の開閉
+========================================================== */
+.bulk-participant-head-actions{display:flex;align-items:center;gap:10px}
+.bulk-toggle-button{padding:7px 12px;min-width:72px}
+#bulkParticipantBody.hidden{display:none!important}
+
+/* 列幅と列間隔を固定し、全ラウンドの横方向を均一にする */
+.auto-bracket,.bracket-half{column-gap:72px!important;gap:72px!important}
+.bracket-round-column{width:205px;min-width:205px!important}
+.bracket-round-matches{position:relative!important;display:block!important;flex:none!important;gap:0!important}
+.auto-match{width:100%;box-sizing:border-box}
+
+/* SVGだけを接続線として使う */
+.bracket-connection-path{stroke:#64748b;stroke-width:2;shape-rendering:crispEdges}
+@media(max-width:700px){
+  .auto-bracket,.bracket-half{column-gap:58px!important;gap:58px!important}
+  .bracket-round-column{width:180px;min-width:180px!important}
+  .bulk-participant-head{align-items:flex-start}
+  .bulk-participant-head-actions{flex-shrink:0}
+}
+
+/* ==========================================================
+   2026-10-05 FIX: 準決勝・決勝の完全整列
+========================================================== */
+.auto-bracket-centered .bracket-center-final{
+    position:relative!important;
+    align-self:stretch;
+    justify-content:flex-start!important;
+    min-width:190px;
+}
+.auto-bracket-centered .bracket-final-title{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    margin:0;
+    height:28px;
+    text-align:center;
+}
+.auto-bracket-centered .bracket-final-match{
+    position:absolute;
+    left:0;
+    right:0;
+    margin:0;
+    transform:translateY(-50%);
+}
+.auto-bracket-centered .bracket-champion-box{
+    position:absolute;
+    left:50%;
+    top:calc(50% - 170px);
+    transform:translateX(-50%);
+    margin:0;
+    z-index:2;
+    white-space:nowrap;
+}
+.auto-bracket-centered .bracket-final-connection{
+    stroke-linecap:square;
+    stroke-linejoin:miter;
+}
+
+/* 2026-10-05: 自動生成ブラケットを大会進行表示として共用 */
+.bracket-setup-canvas {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 78vh;
+    overscroll-behavior: auto;
+    touch-action: pan-x pan-y;
+}
+.bracket-live-mode .bracket-setup-canvas { margin-top: 0; }
+.future-slot.live-player { justify-content: space-between; gap: 8px; color: #e2e8f0; border-style: solid; }
+.future-slot.is-winner,
+.bracket-setup-slot.is-live-winner { border-color: #22c55e !important; background: rgba(34,197,94,.12) !important; color: #dcfce7 !important; }
+.winner-badge { margin-left: auto; padding: 2px 6px; border-radius: 999px; background: rgba(34,197,94,.18); color: #86efac; font-size: 10px; white-space: nowrap; }
+
+/* 2026-10-05: 大会進行操作 */
+.bracket-header-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.fullscreen-bracket-button{white-space:nowrap}
+.button-warning{background:#d97706!important;border-color:#f59e0b!important;color:#fff!important}
+.button-warning:hover:not(:disabled){background:#b45309!important}
+.generated-win-button{margin-left:auto;padding:5px 9px;border:1px solid #22c55e;border-radius:7px;background:#166534;color:#fff;font:inherit;font-size:10px;font-weight:900;cursor:pointer;white-space:nowrap}
+.generated-win-button.host{border-color:#60a5fa;background:#1d4ed8}
+.generated-win-button:disabled{opacity:.5;cursor:not-allowed}
+.bracket-setup-slot.is-live-winner,.future-slot.live-player{gap:8px}
+
+/* 別ウィンドウのトーナメント表専用表示 */
+body.bracket-fullscreen-mode .app-header,
+body.bracket-fullscreen-mode #homeScreen,
+body.bracket-fullscreen-mode #tournamentScreen > :not(#bracketSetupPrototype),
+body.bracket-fullscreen-mode #bracketSetupPrototype .bulk-participant-box,
+body.bracket-fullscreen-mode #bracketSetupPrototype .bracket-auto-summary,
+body.bracket-fullscreen-mode #bracketSetupPrototype .bracket-setup-controls,
+body.bracket-fullscreen-mode #bracketSetupPrototype .bracket-setup-note,
+body.bracket-fullscreen-mode #bracketSetupPrototype #bracketSetupParticipantPool,
+body.bracket-fullscreen-mode #bracketSetupPrototype .fullscreen-bracket-button{
+    display:none!important;
+}
+body.bracket-fullscreen-mode{margin:0;overflow:hidden;background:#080f1b}
+body.bracket-fullscreen-mode #tournamentScreen{display:block!important;margin:0!important;padding:0!important;max-width:none!important;width:100vw;height:100vh}
+body.bracket-fullscreen-mode #bracketSetupPrototype{display:block!important;margin:0!important;padding:12px!important;border:0!important;border-radius:0!important;width:99vw;height:100vh;box-sizing:border-box}
+body.bracket-fullscreen-mode #bracketSetupPrototype .panel-header{margin-bottom:8px}
+body.bracket-fullscreen-mode #bracketSetupCanvas{height:calc(100vh - 72px);max-height:none;margin:0;box-sizing:border-box}
+
+/* 2026-10-05: requested tournament controls/search refinements */
+.host-actions{grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:stretch}
+.button-warning.is-resume{background:#f59e0b!important;border-color:#fbbf24!important;color:#111827!important;box-shadow:0 0 0 2px rgba(251,191,36,.20),0 0 18px rgba(245,158,11,.28)}
+.participant-search-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin:12px 0 14px}
+.participant-search-form input{min-width:0;height:44px;box-sizing:border-box;padding:0 12px;border:1px solid #475569;border-radius:9px;background:#080f1b;color:#e2e8f0;font:inherit;outline:none}
+.participant-search-form input:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(59,130,246,.14)}
+.host-participant-item.search-highlight{border-color:#fbbf24!important;background:rgba(245,158,11,.16)!important;box-shadow:0 0 0 3px rgba(245,158,11,.18),0 0 20px rgba(245,158,11,.18)}
+.bracket-live-mode .bracket-setup-slot[data-setup-participant-id]{cursor:default!important;touch-action:auto!important}
+.bracket-live-mode .bracket-setup-player{cursor:default!important;touch-action:auto!important}
+@media(max-width:900px){.host-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:520px){.host-actions{grid-template-columns:1fr!important}.participant-search-form{grid-template-columns:1fr}.participant-search-form .button{width:100%}}
+
+
+/* 2026-10-07: fullscreen bracket / participant list refinements */
+body.bracket-fullscreen-mode .main-content{
+    max-width:none!important;
+}
+.host-participant-item.search-highlight{
+    border-color:#38bdf8!important;
+    background:rgba(56,189,248,.16)!important;
+    box-shadow:0 0 0 3px rgba(56,189,248,.18),0 0 20px rgba(56,189,248,.18)!important;
+}
+.participant-list-heading{
+    margin:2px 0 8px;
+    color:#e2e8f0;
+    font-size:13px;
+    font-weight:900;
+}
+.host-participant-list{
+    max-height:365px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding-right:6px;
+    align-content:start;
+}
+
+/* 2026-10-07: keep pause control visible before start, but clearly disabled */
+#pauseTournamentButton:disabled{
+    cursor:not-allowed!important;
+}
+
+
+/* 2026-10-07: fullscreen bracket top horizontal scrollbar */
+.fullscreen-bracket-top-scrollbar{display:none}
+body.bracket-fullscreen-mode .fullscreen-bracket-top-scrollbar{
+    display:block;
+    width:100%;
+    height:18px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    box-sizing:border-box;
+}
+body.bracket-fullscreen-mode .fullscreen-bracket-top-scrollbar-inner{
+    height:1px;
+}
+body.bracket-fullscreen-mode #bracketSetupCanvas{
+    height:calc(100vh - 90px);
+}
+
+/* 大会コード表示切替 */
+.code-visibility-button {
+    position: relative;
+    width: 42px;
+    min-height: 34px;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(148, 163, 184, .35);
+    border-radius: 10px;
+    background: rgba(15, 23, 42, .72);
+    color: #e2e8f0;
+    cursor: pointer;
+    font-size: 22px;
+}
+.code-visibility-button:hover { background: rgba(51, 65, 85, .9); }
+.code-visibility-button i {
+    pointer-events: none;
+    font-size: 20px;
+}
+
+
+/* 2026-10-07: 左→右型の決勝・優勝を中央型と同じ基準で整列 */
+.auto-bracket-standard .bracket-winner-column{
+    position:relative!important;
+    justify-content:flex-start!important;
+}
+.auto-bracket-standard .bracket-winner-column > .bracket-round-title{
+    margin-bottom:10px;
+}
+.auto-bracket-standard .bracket-winner-box{
+    box-sizing:border-box;
+    width:100%;
+}
+\n\n/* 2026-10-08: bracket player names are capped at two visual lines; own slot is light blue */
+.auto-bracket .bracket-setup-slot,
+.auto-bracket .future-slot.live-player {
+    min-height: 58px;
+    height: 58px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.auto-bracket .bracket-player-name {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.35;
+    max-height: 2.7em;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+.auto-bracket .seed-badge,
+.auto-bracket .generated-win-button,
+.auto-bracket .winner-badge {
+    flex: 0 0 auto;
+}
+.auto-bracket .bracket-setup-slot.is-my-slot,
+.auto-bracket .future-slot.live-player.is-my-slot {
+    border-color: #7dd3fc !important;
+    background: rgba(56, 189, 248, .16) !important;
+    color: #e0f2fe !important;
+    box-shadow: inset 0 0 0 1px rgba(125, 211, 252, .16);
+}
+
+
+/* 2026-10-08: participant cards use a uniform two-line height */
+.auto-bracket .bracket-setup-slot,
+.auto-bracket .future-slot.live-player {
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    overflow: hidden !important;
+}
+.auto-bracket .bracket-player-name {
+    width: 0;
+    min-width: 0;
+    flex: 1 1 0;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    line-height: 1.35;
+    max-height: 2.7em;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+.auto-bracket .bracket-round-matches {
+    gap: 22px;
+}
+/* 本人の枠は勝敗色よりも分かりやすい水色を優先 */
+.auto-bracket .bracket-setup-slot.is-my-slot,
+.auto-bracket .future-slot.live-player.is-my-slot,
+.auto-bracket .bracket-setup-slot.is-my-slot.is-live-winner,
+.auto-bracket .future-slot.live-player.is-my-slot.is-winner {
+    border: 2px solid #38bdf8 !important;
+    background: rgba(14, 165, 233, .24) !important;
+    color: #e0f2fe !important;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, .12), inset 0 0 18px rgba(56, 189, 248, .08) !important;
+}
+.bracket-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.bracket-title-row h2 { margin: 0; }
+.bracket-viewer-name {
+    display: inline-flex;
+    align-items: center;
+    max-width: 320px;
+    min-height: 28px;
+    padding: 4px 10px;
+    box-sizing: border-box;
+    border: 1px solid #38bdf8;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, .14);
+    color: #bae6fd;
+    font-size: 12px;
+    font-weight: 900;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.bracket-viewer-name.hidden { display: none !important; }
+
+/* 2026-10-08: one-line bracket names + compact cards */
+.auto-bracket .bracket-setup-slot,
+.auto-bracket .future-slot.live-player {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    overflow: hidden !important;
+}
+.auto-bracket .bracket-player-name {
+    width: 0;
+    min-width: 0;
+    flex: 1 1 0;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.2 !important;
+    max-height: none !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+}
+.auto-bracket .bracket-player-name.name-fit-small { font-size: calc(1em - 1px); }
+.auto-bracket .bracket-player-name.name-fit-smaller { font-size: calc(1em - 2px); }
+.auto-bracket .bracket-round-matches { gap: 14px; }
+
+/* BYE text is removed: show only 1回戦免除, with the old BYE emphasis in orange */
+.auto-bracket .bracket-setup-slot.is-bye {
+    flex-direction: row;
+    justify-content: center;
+    border-color: #d97706;
+    background: rgba(245,158,11,.13);
+    color: #f59e0b;
+}
+.auto-bracket .bracket-setup-slot.is-bye .bye-exemption {
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #f59e0b;
+    white-space: nowrap;
+}
+
+.bracket-name-hover-tooltip {
+    position: fixed;
+    z-index: 100000;
+    display: none;
+    max-width: 360px;
+    padding: 7px 10px;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    background: #0b1422;
+    color: #f8fafc;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.45;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+
+/* 2026-10-08: TOP bulk host tournament actions */
+.bulk-tournament-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 22px 0 4px;
+}
+.bulk-tournament-button {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-weight: 800;
+}
+.bulk-archive-button {
+    border: 1px solid #d97706;
+    background: rgba(245, 158, 11, .13);
+    color: #fbbf24;
+}
+.bulk-archive-button:hover:not(:disabled) {
+    background: rgba(245, 158, 11, .22);
+}
+.bulk-delete-button {
+    border: 1px solid #dc2626;
+    background: rgba(239, 68, 68, .13);
+    color: #fca5a5;
+}
+.bulk-delete-button:hover:not(:disabled) {
+    background: rgba(239, 68, 68, .23);
+}
+@media (max-width: 620px) {
+    .bulk-tournament-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+    .bulk-tournament-button {
+        width: 100%;
+    }
+}
+
+#bracketManualBulkButton{white-space:nowrap}
+
+
+/* ==========================================================
+   2026-10-08: 通知・ボタンホバー・ブラケット操作ボタン配置
+========================================================== */
+
+/* 上部通知はすべて完全不透明 */
+#message,
+#message.message {
+    background: #172337 !important;
+}
+#message.success,
+#message.message.success {
+    background: #166534 !important;
+    border-color: #22c55e !important;
+    color: #ffffff !important;
+}
+#message.error,
+#message.message.error {
+    background: #991b1b !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+#message.info,
+#message.message.info {
+    background: #1e40af !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+}
+#message.warning,
+#message.message.warning,
+#message.toast-click-to-close.warning {
+    background: #9a5b08 !important;
+    border-color: #f59e0b !important;
+    color: #ffffff !important;
+}
+/* 表示/非表示アニメーション用 opacity 以外に半透明背景を使わない */
+#message:not(.hidden):not(.toast-preparing):not(.toast-hiding) {
+    opacity: 1 !important;
+}
+
+/* 全ボタンでホバー位置を明確に可視化 */
+@media (hover: hover) and (pointer: fine) {
+    button:hover:not(:disabled) {
+        filter: brightness(1.18);
+        box-shadow: 0 0 0 2px rgba(96, 165, 250, .42), 0 7px 18px rgba(0, 0, 0, .24);
+        transform: translateY(-1px);
+    }
+}
+
+/* 配置操作: 上段3ボタンを中央揃え */
+.bracket-setup-controls {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 11px !important;
+    margin-bottom: 12px;
+}
+.bracket-setup-primary-actions {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.bracket-setup-primary-actions .button {
+    flex: 0 1 220px;
+    min-width: 190px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.bracket-setup-fullscreen-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.bracket-setup-fullscreen-row .fullscreen-bracket-button {
+    width: min(100%, 360px);
+    min-width: 260px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-color: #1d4ed8 !important;
+    background: linear-gradient(180deg, #2563eb, #1d4ed8) !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 700px) {
+    .bracket-setup-primary-actions .button {
+        flex: 1 1 150px;
+        min-width: 145px;
+    }
+    .bracket-setup-fullscreen-row .fullscreen-bracket-button {
+        width: min(100%, 360px);
+        min-width: 0;
+    }
+}
+
+
+/* 2026-10-08: bracket setup participant list visibility / compact height */
+.bracket-setup-pool-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+}
+.bracket-pool-toggle-button{
+    min-width:88px;
+    padding:8px 16px;
+}
+.bracket-setup-pool-list{
+    max-height:132px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    align-content:flex-start;
+    padding-right:6px;
+}
+.bracket-setup-pool-list.hidden{
+    display:none!important;
+}
+
+
+/* 2026-10-08: 256-player limit, resizable participant pool, participant search */
+.bracket-auto-summary > div.is-participant-limit{
+    border-color:rgba(248,113,113,.58)!important;
+    background:rgba(127,29,29,.16)!important;
+    box-shadow:inset 0 0 0 1px rgba(248,113,113,.08);
+}
+.bracket-auto-summary > div.is-participant-limit span,
+.bracket-auto-summary > div.is-participant-limit strong{
+    color:#fecaca!important;
+}
+
+.bracket-pool-search-form{
+    margin:0 0 10px;
+}
+.bracket-pool-search-form.hidden{
+    display:none!important;
+}
+.bracket-pool-search-form label{
+    display:block;
+    margin-bottom:6px;
+    color:#cbd5e1;
+    font-size:12px;
+    font-weight:900;
+}
+.bracket-pool-search-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:8px;
+}
+.bracket-pool-search-row input{
+    min-width:0;
+    height:42px;
+    box-sizing:border-box;
+    padding:0 12px;
+    border:1px solid #475569;
+    border-radius:9px;
+    background:#080f1b;
+    color:#e2e8f0;
+    font:inherit;
+    outline:none;
+}
+.bracket-pool-search-row input:focus{
+    border-color:#60a5fa;
+    box-shadow:0 0 0 3px rgba(59,130,246,.14);
+}
+.bracket-setup-pool-list{
+    min-height:84px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.bracket-setup-player.search-highlight{
+    border-color:#38bdf8!important;
+    background:rgba(56,189,248,.22)!important;
+    box-shadow:0 0 0 3px rgba(56,189,248,.18),0 0 20px rgba(56,189,248,.18)!important;
+}
+.bracket-pool-resize-handle{
+    height:16px;
+    margin:4px 0 -4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:ns-resize;
+    touch-action:none;
+    user-select:none;
+}
+.bracket-pool-resize-handle.hidden{
+    display:none!important;
+}
+.bracket-pool-resize-handle span{
+    width:54px;
+    height:4px;
+    border-radius:999px;
+    background:#475569;
+}
+.bracket-pool-resize-handle:hover span{
+    background:#60a5fa;
+}
+body.is-resizing-participant-pool{
+    cursor:ns-resize!important;
+    user-select:none!important;
+}
+@media(max-width:520px){
+    .bracket-pool-search-row{
+        grid-template-columns:1fr;
+    }
+    .bracket-pool-search-row .button{
+        width:100%;
+    }
+}
+
+
+/* 大会開始後：トーナメント表の参加者検索 */
+.bracket-live-participant-search {
+    width: min(100%, 520px);
+    margin: 10px auto 14px;
+}
+
+.bracket-live-participant-search > label {
+    display: block;
+    margin-bottom: 7px;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.bracket-live-participant-search-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bracket-live-participant-search-row input {
+    min-width: 0;
+    height: 44px;
+    flex: 1;
+    padding: 0 13px;
+    border: 1px solid #475569;
+    border-radius: 9px;
+    outline: none;
+    background: #080f1b;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.bracket-live-participant-search-row input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, .14);
+}
+
+.bracket-live-search-highlight {
+    border-color: #38bdf8 !important;
+    background: rgba(56, 189, 248, .22) !important;
+    box-shadow:
+        0 0 0 3px rgba(56, 189, 248, .24),
+        0 0 22px rgba(56, 189, 248, .24) !important;
+}
+
+@media (max-width: 520px) {
+    .bracket-live-participant-search-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bracket-live-participant-search-row .button {
+        width: 100%;
+    }
+}
+
+/* 2026-10-08: 全画面ブラケット 四辺均等余白・見切れ修正版 */
+body.bracket-fullscreen-mode {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #080f1b;
+}
+
+body.bracket-fullscreen-mode .main-content,
+body.bracket-fullscreen-mode #tournamentScreen {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+}
+
+body.bracket-fullscreen-mode #bracketSetupPrototype {
+    position: fixed !important;
+    top: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    left: 12px !important;
+
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+
+    border: 1px solid rgba(148, 163, 184, .28) !important;
+    border-radius: 12px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+body.bracket-fullscreen-mode #bracketSetupPrototype .panel-header {
+    flex: 0 0 auto !important;
+    margin: 0 0 8px !important;
+}
+
+body.bracket-fullscreen-mode #bracketSetupPrototype .bracket-live-participant-search {
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: min(100%, 520px);
+    margin: 0 auto 8px !important;
+}
+
+body.bracket-fullscreen-mode #bracketSetupPrototype .bracket-live-participant-search > label {
+    display: none !important;
+}
+
+body.bracket-fullscreen-mode .fullscreen-bracket-top-scrollbar {
+    flex: 0 0 18px !important;
+    width: 100% !important;
+}
+
+body.bracket-fullscreen-mode #bracketSetupCanvas {
+    flex: 1 1 0 !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+
+/* 2026-10-08: シード参加者カードは勝利と同じ緑枠 */
+.bracket-setup-slot.is-seed .bracket-setup-player,
+.bracket-setup-player.is-seed,
+.bracket-setup-slot.seed-slot .bracket-setup-player,
+.bracket-setup-player.seed-player {
+    border-color: #22c55e !important;
+    background: rgba(22, 101, 52, .24) !important;
+    box-shadow:
+        inset 0 0 0 1px rgba(34, 197, 94, .12),
+        0 0 0 1px rgba(34, 197, 94, .08) !important;
+}
+
+/* 1回戦免除の表示は従来どおりオレンジのまま */
+
+
+/* 2026-10-08: 修正 - シード参加者のカード本体を勝利と同じ緑にする */
+.bracket-setup-slot.is-seed {
+    border-color: #22c55e !important;
+    background: rgba(22, 101, 52, .24) !important;
+    color: #e2e8f0 !important;
+    box-shadow:
+        inset 0 0 0 1px rgba(34, 197, 94, .12),
+        0 0 0 1px rgba(34, 197, 94, .08) !important;
+}
+
+/* シード枠バッジはそのまま識別できるよう維持 */
+
+
+/* 2026-10-08: 参加者削除ボタン */
+.button-delete-participant {
+    background: rgba(15, 23, 42, .72) !important;
+    border-color: rgba(71, 85, 105, .72) !important;
+    color: #cbd5e1 !important;
+}
+
+.button-delete-participant:hover:not(:disabled) {
+    background: #b91c1c !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+
+/* 2026-10-08: BANと削除の間隔・削除ホバー調整 */
+.button-delete-participant {
+    margin-left: 5px !important;
+}
+
+.button-delete-participant:hover:not(:disabled) {
+    background: rgba(185, 28, 28, .58) !important;
+    border-color: rgba(239, 68, 68, .78) !important;
+    color: #ffffff !important;
+}
+
+
+/* 2026-10-08: 大会開始後は参加者削除不可 */
+.button-delete-participant.delete-disabled-after-start {
+    cursor: not-allowed !important;
+    opacity: .62;
+}
+
+.button-delete-participant.delete-disabled-after-start:hover {
+    background: rgba(15, 23, 42, .72) !important;
+    border-color: rgba(71, 85, 105, .72) !important;
+    color: #cbd5e1 !important;
+}
+
+.participant-delete-disabled-tooltip {
+    position: fixed;
+    z-index: 100000;
+    display: none;
+    pointer-events: none;
+    max-width: 330px;
+    padding: 9px 11px;
+    border: 1px solid rgba(239, 68, 68, .42);
+    border-radius: 8px;
+    background: rgba(15, 23, 42, .96);
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.55;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+}
+
+.participant-delete-disabled-tooltip.is-visible {
+    display: block;
+}
+
+
+/* 2026-10-08: 大会開始後の削除不可ボタンもホバー時は透過赤 */
+.button-delete-participant.delete-disabled-after-start:hover {
+    background: rgba(185, 28, 28, .58) !important;
+    border-color: rgba(239, 68, 68, .78) !important;
+    color: #ffffff !important;
+}
+
+
+/* 2026-10-08: トーナメント作成サマリーを画像に合わせて調整 */
+.bracket-auto-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+}
+
+.bracket-auto-summary > div {
+    position: relative !important;
+    min-height: 62px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+    background: #0b1422 !important;
+}
+
+.bracket-auto-summary > div > span {
+    position: relative !important;
+    z-index: 1;
+    margin: 0 !important;
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+}
+
+.bracket-auto-summary > div > strong {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    color: #f8fafc !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+}
+
+@media (max-width: 700px) {
+    .bracket-auto-summary {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* 2026-10-08: TOP大会一覧 優勝者表示 */
+.my-tournament-champion {
+    margin-top: 5px;
+    color: #22c55e;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   二次開発：トーナメント方式選択
+========================================================== */
+
+.tournament-mode-selection {
+    width: min(100%, 760px);
+    margin: 0 auto 34px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.tournament-mode-card {
+    min-height: 180px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    background: #0b1422;
+    color: #f8fafc;
+    cursor: pointer;
+    font: inherit;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+    transition:
+        transform .16s ease,
+        border-color .16s ease,
+        background .16s ease,
+        box-shadow .16s ease;
+}
+
+.tournament-mode-card:hover {
+    transform: translateY(-2px);
+    border-color: #3b82f6;
+    background: #0f1b2d;
+    box-shadow: 0 14px 34px rgba(37, 99, 235, .13);
+}
+
+.tournament-mode-card-youtube:hover {
+    border-color: #ef4444;
+    box-shadow: 0 14px 34px rgba(239, 68, 68, .10);
+}
+
+.tournament-mode-title {
+    display: block;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.tournament-mode-description {
+    display: block;
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.tournament-mode-content {
+    width: 100%;
+}
+
+.tournament-mode-back-area {
+    width: min(100%, 1100px);
+    margin: 0 auto 16px;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.tournament-mode-back-button {
+    width: auto;
+}
+
+.youtube-mode-placeholder {
+    width: min(calc(100% - 32px), 620px);
+    margin: 0 auto 36px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.youtube-mode-placeholder p {
+    margin: 0;
+    color: #94a3b8;
+    line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+    .tournament-mode-selection {
+        grid-template-columns: 1fr;
+    }
+
+    .tournament-mode-card {
+        min-height: 150px;
+    }
+}
+
+
+/* ==========================================================
+   YouTube連携版：大会作成
+========================================================== */
+.youtube-create-panel {
+    width: min(calc(100% - 32px), 680px);
+    margin: 0 auto 36px;
+    box-sizing: border-box;
+}
+.youtube-create-form { display: grid; gap: 18px; }
+.youtube-create-form .field-group { display: grid; gap: 8px; }
+.youtube-create-form .field-group label {
+    color: #e2e8f0; font-size: 13px; font-weight: 800;
+}
+.youtube-create-form input { width: 100%; box-sizing: border-box; }
+.youtube-detection-note {
+    padding: 14px 16px; border: 1px solid #334155; border-radius: 12px;
+    background: rgba(15,23,42,.55); color: #94a3b8;
+    font-size: 13px; line-height: 1.75;
+}
+.youtube-detection-note p { margin: 0; }
+.youtube-detection-note p + p { margin-top: 5px; }
+.youtube-entry-condition {
+    padding: 18px; border: 1px solid #334155; border-radius: 12px;
+    background: #0b1422; text-align: center;
+}
+.youtube-entry-condition h3 { margin: 0 0 10px; color: #f8fafc; font-size: 16px; }
+.youtube-entry-condition p { margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.7; }
+.youtube-entry-words {
+    margin-top: 13px; color: #f8fafc; font-size: 16px;
+    font-weight: 900; white-space: nowrap;
+}
+.youtube-entry-words span { margin: 0 5px; color: #64748b; font-size: 12px; font-weight: 800; }
+.youtube-entry-exact { margin-top: 8px; color: #94a3b8; font-size: 12px; }
+.youtube-create-button { width: 100%; min-height: 48px; }
+@media (max-width: 520px) {
+    .youtube-entry-words { font-size: 14px; }
+    .youtube-entry-words span { margin: 0 2px; }
+}
+
+
+/* ==========================================================
+   YouTube連携版：入力欄デザイン調整
+   ※ 通常トーナメント側の入力欄には影響させない
+========================================================== */
+
+.youtube-create-form input[type="text"],
+.youtube-create-form input[type="url"] {
+    min-height: 56px;
+    padding: 14px 17px;
+    border: 1px solid #263b57;
+    border-radius: 12px;
+    background: #08111f;
+    color: #f8fafc;
+    font-size: 15px;
+    line-height: 1.4;
+    outline: none;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .025),
+        0 0 0 1px rgba(37, 99, 235, .035);
+    transition:
+        border-color .16s ease,
+        background .16s ease,
+        box-shadow .16s ease;
+}
+
+.youtube-create-form input[type="text"]::placeholder,
+.youtube-create-form input[type="url"]::placeholder {
+    color: #64748b;
+}
+
+.youtube-create-form input[type="text"]:hover,
+.youtube-create-form input[type="url"]:hover {
+    border-color: #36577e;
+    background: #0a1525;
+}
+
+.youtube-create-form input[type="text"]:focus,
+.youtube-create-form input[type="url"]:focus {
+    border-color: #3b82f6;
+    background: #0a1628;
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, .13),
+        inset 0 1px 0 rgba(255, 255, 255, .03);
+}
+
+
+/* YouTube API単発接続テスト（通常版への影響なし） */
+.youtube-api-test-area { display: grid; gap: 10px; }
+.youtube-api-test-area .button { min-height: 46px; border: 1px solid #34577e; background: #0c1c31; color: #cfe3ff; border-radius: 11px; }
+.youtube-api-test-area .button:hover { background: #102b49; }
+.youtube-api-test-area .button:disabled { opacity: .6; cursor: wait; }
+.youtube-api-test-result { padding: 12px 14px; border-radius: 10px; background: #07111f; border: 1px solid #2d4564; color: #d9eaff; font-size: 13px; overflow-wrap: anywhere; }
+
+/* YouTube LIVE接続（主催者用） */
+.youtube-live-save-panel { text-align: center; }
+.youtube-live-save-panel .button { width: min(100%, 440px); min-height: 52px; }
+.youtube-live-save-result { margin: 14px auto 0; max-width: 720px; color: #cbd5e1; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.youtube-live-save-note { color: #94a3b8; font-size: 12px; line-height: 1.7; }
+
+/* YouTube連携大会専用：チャット監視 */
+.youtube-chat-monitor-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.youtube-chat-monitor-actions .button { flex: 1 1 180px; min-height: 48px; }
+.youtube-chat-monitor-start { background: #15803d; border-color: #22c55e; color: #fff; }
+.youtube-chat-monitor-start:hover:not(:disabled) { background: #16a34a; }
+.youtube-chat-monitor-status { margin: 14px 0 8px; padding: 12px; border: 1px solid #334155; border-radius: 9px; background: #0b1422; color: #cbd5e1; line-height: 1.6; overflow-wrap: anywhere; }
+
+
+/* Unified TOP: normal creation and YouTube creation side by side, join below. */
+#homeScreen .home-container {
+    width: min(calc(100% - 32px), 1120px);
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 22px;
+    padding: 22px;
+    margin: 0 auto 30px;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    background: rgba(15,23,42,.35);
+    box-sizing: border-box;
+}
+#homeScreen .home-container > .home-create-normal { grid-column: 1; }
+
+
+#homeScreen .home-container > .home-join-panel {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+}
+#homeScreen .home-container > .home-create-normal,
+#homeScreen .home-container > .home-join-panel { margin: 0; min-width: 0; }
+@media (max-width: 760px) {
+    #homeScreen .home-container { grid-template-columns: minmax(0,1fr); padding: 14px; }
+    #homeScreen .home-container > .home-create-normal,
+    #homeScreen .home-container > .youtube-create-panel,
+    #homeScreen .home-container > .home-join-panel { grid-column: 1; }
+}
+
+
+#homeScreen .youtube-create-toggle {
+    width: 100%;
+    min-height: 180px;
+}
+#homeScreen .youtube-create-form.hidden { display: none !important; }
+#homeScreen .youtube-create-panel.youtube-create-open {
+    border: 1px solid #334155;
+    border-radius: 16px;
+    background: #0b1422;
+    overflow: hidden;
+}
+#homeScreen .youtube-create-open .youtube-create-toggle {
+    border: 0;
+    border-bottom: 1px solid #334155;
+    border-radius: 0;
+    min-height: 115px;
+}
+#homeScreen .youtube-create-open .youtube-create-form {
+    padding: 22px;
+}
+
+
+
+#homeScreen .youtube-create-panel:not(.youtube-create-open) > .youtube-create-toggle {
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+}
+#homeScreen #joinTournamentForm {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 18px;
+    max-width: none;
+    width: 100%;
+}
+#homeScreen #joinTournamentForm > .form-field {
+    min-width: 0;
+}
+#homeScreen #joinTournamentForm > .form-field input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+#homeScreen #joinTournamentForm > #joinTournamentButton {
+    grid-column: 1 / -1;
+}
+@media (max-width: 560px) {
+    #homeScreen #joinTournamentForm { grid-template-columns: minmax(0, 1fr); }
+    #homeScreen #joinTournamentForm > #joinTournamentButton { grid-column: 1; }
+}
+
+
+/* Tournament type displayed above each tournament name. */
+.my-tournament-type {
+    color: #60a5fa;
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+
+
+/* Standalone YouTube creation route (?page=youtube-create) */
+.youtube-create-page { width: min(100% - 32px, 760px); margin: 32px auto 60px; }
+.youtube-create-page > .button { margin-bottom: 18px; }
+.youtube-create-page-panel { width: 100%; max-width: none; box-sizing: border-box; }
+.youtube-create-page-heading { margin-bottom: 24px; }
+.youtube-create-page-heading h2 { margin: 0 0 6px; }
+.youtube-create-page-heading p { color: #94a3b8; font-weight: 700; letter-spacing: .1em; margin: 0; }
+#youtubeCreateScreen .youtube-create-form { display: flex; flex-direction: column; gap: 16px; }
+#youtubeCreateScreen .youtube-create-form.hidden { display: none; }
+
+
+/* Unified TOP v2: normal create + join on first row; YouTube separate below. */
+#homeScreen .home-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+#homeScreen .home-container > .home-create-normal,
+#homeScreen .home-container > .home-join-panel {
+  grid-column: auto;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+#homeScreen .home-container > .or-separator { display: none; }
+#homeScreen .youtube-home-row {
+  width: min(calc(100% - 32px), 1120px);
+  max-width: 1120px;
+  margin: 0 auto 26px;
+  box-sizing: border-box;
+}
+#homeScreen .youtube-home-row > .youtube-create-panel {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+#homeScreen .youtube-home-row .youtube-create-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 138px;
+  box-sizing: border-box;
+}
+#homeScreen .home-join-panel #joinTournamentForm {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 760px) {
+  #homeScreen .home-container { grid-template-columns: minmax(0, 1fr); }
+  #homeScreen .home-container > .home-create-normal,
+  #homeScreen .home-container > .home-join-panel { grid-column: 1; }
+}
+@media (max-width: 560px) {
+  #homeScreen .home-join-panel #joinTournamentForm { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* TOP: match the tournament list width to the creation and YouTube rows. */
+#homeScreen #myTournamentsPanel {
+    display: block;
+    width: min(calc(100% - 32px), 1120px);
+    max-width: 1120px;
+    margin: 0 auto 30px;
+    box-sizing: border-box;
+}
+
+/* The complete TO / Tournament / ONLINE TOURNAMENT brand is a home link. */
+.app-header .brand-home-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+.app-header .brand-home-link:hover { opacity: 0.9; }
+.app-header .brand-home-link:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 5px;
+    border-radius: 8px;
+}
+
+
+/* YouTube大会作成画面: 深いネイビーブルーの戻るボタン */
+#youtubeCreateBackButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 11px 22px;
+    color: #eaf3ff;
+    background: linear-gradient(135deg, #173c69 0%, #0b203b 58%, #071424 100%);
+    border: 1px solid #37618d;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(2, 9, 25, 0.3), inset 0 1px 0 rgba(255,255,255,0.09);
+    font-weight: 700;
+    letter-spacing: .015em;
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+#youtubeCreateBackButton:hover {
+    background: linear-gradient(135deg, #24558b 0%, #123456 65%, #0b203b 100%);
+    border-color: #6a9acb;
+    box-shadow: 0 6px 18px rgba(6, 26, 55, .4), inset 0 1px 0 rgba(255,255,255,.12);
+    transform: translateY(-1px);
+}
+#youtubeCreateBackButton:active { transform: translateY(0); }
+#youtubeCreateBackButton:focus-visible { outline: 2px solid #8bc3ff; outline-offset: 3px; }
+
+
+/* 終了した大会一覧：デスクトップは横3列 */
+#archivedTournamentList:not(.hidden) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+#archivedTournamentList > .my-tournament-item {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 900px) {
+    #archivedTournamentList:not(.hidden) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 600px) {
+    #archivedTournamentList:not(.hidden) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* 現在進行中の大会一覧：PCで横3列 */
+#myTournamentList {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+#myTournamentList > .my-tournament-item {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 900px) {
+    #myTournamentList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    #myTournamentList { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 大会に参加：大会コード・参加者名を常に縦並びにする */
+#homeScreen .home-join-panel #joinTournamentForm {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 18px;
+}
+#homeScreen .home-join-panel #joinTournamentForm > #joinTournamentButton {
+    grid-column: 1;
+}
+
+
+/* TOPファーストビュー省スペース化：文字サイズは変更しない */
+#homeScreen .welcome-section {
+    padding-top: 10px;
+    padding-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+#homeScreen .welcome-section h2 { margin-top: 4px; margin-bottom: 4px; }
+#homeScreen .welcome-section p { margin-top: 5px; margin-bottom: 0; }
+#homeScreen .welcome-mark { margin-bottom: 4px; }
+#homeScreen .home-container {
+    padding: 12px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+#homeScreen .home-container > .home-panel {
+    padding: 15px 18px;
+    margin: 0;
+}
+#homeScreen .home-panel .panel-header { margin-bottom: 12px; }
+#homeScreen .home-panel .panel-header h2 { margin-top: 0; margin-bottom: 3px; }
+#homeScreen .home-panel .panel-subtitle { margin-top: 0; }
+#homeScreen #createTournamentForm,
+#homeScreen #joinTournamentForm { gap: 10px; }
+#homeScreen .home-join-panel #joinTournamentForm { row-gap: 10px; }
+#homeScreen .home-panel .form-field { gap: 4px; }
+#homeScreen .home-panel .form-field input { height: 43px; }
+#homeScreen .home-panel .large-button { min-height: 42px; padding-top: 8px; padding-bottom: 8px; }
+#homeScreen .youtube-home-row { margin-bottom: 12px; }
+#homeScreen .youtube-home-row .youtube-create-toggle {
+    min-height: 84px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#homeScreen #myTournamentsPanel { margin-top: 0; margin-bottom: 20px; }
+@media (max-width: 760px) {
+    #homeScreen .welcome-section { padding-top: 8px; padding-bottom: 10px; }
+    #homeScreen .home-container { padding: 10px; gap: 10px; }
+    #homeScreen .home-container > .home-panel { padding: 14px; }
+}
+
+
+/* TOPのファーストビューをさらに短縮。フォントサイズはそのまま。 */
+.app-header .header-inner {
+    min-height: 54px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#homeScreen { margin-top: 0; }
+.main-content { padding-top: 6px; }
+#homeScreen .welcome-section {
+    padding: 0 12px 6px;
+    margin: 20px 0 20px;
+}
+#homeScreen .welcome-mark {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 3px;
+    border-radius: 13px;
+}
+#homeScreen .welcome-section h2 { margin: 0; line-height: 1.1; }
+#homeScreen .welcome-subtitle { margin-top: 1px; }
+#homeScreen .welcome-section p { margin: 3px 0 0; line-height: 1.4; }
+#homeScreen .home-container {
+    padding: 8px;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+#homeScreen .home-container > .home-panel { padding: 10px 14px; }
+#homeScreen .home-panel .panel-header { margin-bottom: 7px; }
+#homeScreen .home-panel .form-field { gap: 2px; }
+#homeScreen #createTournamentForm,
+#homeScreen #joinTournamentForm { gap: 6px; }
+#homeScreen .home-join-panel #joinTournamentForm { row-gap: 6px; }
+#homeScreen .home-panel .form-field input { height: 38px; }
+#homeScreen .home-panel .large-button {
+    min-height: 38px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+#homeScreen .youtube-home-row { margin-bottom: 8px; }
+#homeScreen .youtube-home-row .youtube-create-toggle {
+    min-height: 64px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+#homeScreen #myTournamentsPanel { margin-top: 0; }
+@media (max-width: 760px) {
+    #homeScreen .welcome-section { padding: 0 10px 6px; }
+    #homeScreen .home-container { padding: 8px; gap: 8px; }
+    #homeScreen .home-container > .home-panel { padding: 10px 12px; }
+}
+
+
+/* ご指定のフォーム余白・見出し余白とコンパクトヘッダー */
+#homeScreen .home-panel .form-field {
+    gap: 4px;
+    margin-bottom: 20px;
+}
+#homeScreen .welcome-section {
+    padding: 0 12px 6px;
+    margin: 10px 0;
+}
+.form-label {
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+@media (min-width: 760px) {
+    #homeScreen .home-panel {
+        margin-bottom: 0;
+        padding: 10px 24px;
+    }
+}
+/* ロゴ・見出しを少し小さくしてヘッダーの縦幅を抑える */
+.app-header .header-inner {
+    min-height: 44px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.app-header .brand { gap: 8px; }
+.app-header .brand-mark {
+    width: 34px;
+    height: 34px;
+    min-height: 34px;
+    flex-basis: 34px;
+    font-size: 12px;
+    border-radius: 9px;
+}
+.app-header .brand h1 { font-size: 17px; line-height: 1.05; }
+.app-header .brand-subtitle {
+    font-size: 9px;
+    letter-spacing: 1.3px;
+    margin-top: 2px;
+}
+
+/* TOPページ余白の追加調整 */
+#homeScreen .home-panel .panel-header {
+    margin-bottom: 0;
+}
+
+.my-tournament-section-heading {
+    margin-top: -4px;
+    margin-bottom: 14px;
+}
+
+/* YouTube TOP card: background and hover in one place */
+#homeScreen .youtube-home-row > section.youtube-create-panel {
+    position: relative; overflow: visible;
+    background: #cd2c3a; border: 1px solid #eaa0a9;
+    border-radius: 16px; box-shadow: none;
+}
+#homeScreen .youtube-home-row > section.youtube-create-panel > button#youtubeCreateToggle {
+    position: relative; z-index: 1; width: 100%;
+    background: #cd2c3a; background-image: none; color: #fff;
+    border: 1px solid #eaa0a9; border-radius: 16px;
+    box-shadow: none; opacity: 1; transform: scale(1);
+    transform-origin: center;
+    transition: transform 540ms cubic-bezier(.16,1,.3,1), opacity 540ms ease, box-shadow 540ms ease;
+}
+#homeScreen .youtube-home-row #youtubeCreateToggle .tournament-mode-title,
+#homeScreen .youtube-home-row #youtubeCreateToggle .tournament-mode-description { color: #fff; }
+#homeScreen .youtube-home-row > section.youtube-create-panel > button#youtubeCreateToggle:hover,
+#homeScreen .youtube-home-row > section.youtube-create-panel > button#youtubeCreateToggle:focus-visible {
+    z-index: 5; background: #cd2c3a; background-image: none;
+    border-color: #eaa0a9; transform: scale(1.085); opacity: .92;
+    box-shadow: 0 20px 38px rgba(105,14,26,.25);
+}
+@media (prefers-reduced-motion: reduce) {
+    #homeScreen .youtube-home-row > section.youtube-create-panel > button#youtubeCreateToggle:hover,
+    #homeScreen .youtube-home-row > section.youtube-create-panel > button#youtubeCreateToggle:focus-visible { transform: none; opacity: 1; }
+}
+
+/* YouTube認証コード：既存デザインを維持した追加要素 */
+.youtube-link-code { display: block; font-size: 32px; letter-spacing: .2em; margin: 12px 0; font-variant-numeric: tabular-nums; }
+#youtubeLinkPanel { margin: 0 0 12px; text-align: center; }
+#youtubeLinkChallenge { margin-top: 12px; }
+
+/* YouTube連携：操作ボタンと認証案内の表示切り替え */
+.youtube-link-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.youtube-link-instructions { line-height: 1.7; }
+.youtube-link-instructions span { display: block; }
+
+/* YouTube閲覧コード：二段ボタン・有効期限 */
+#youtubeLinkStartButton { line-height: 1.4; }
+.youtube-link-countdown { display: inline !important; font-variant-numeric: tabular-nums; font-weight: 800; color: #93c5fd; }
+
+/* YouTube連携版カード：ホバー時のふわっと拡大を復元 */
+@media (hover: hover) and (pointer: fine) {
+  #homeScreen .youtube-home-row > .youtube-create-panel > #youtubeCreateToggle {
+    transform: scale(1);
+    transform-origin: center center;
+    transition: transform 420ms cubic-bezier(.16, 1, .3, 1),
+                box-shadow 420ms ease, opacity 420ms ease;
+    will-change: transform;
+  }
+  #homeScreen .youtube-home-row > .youtube-create-panel > #youtubeCreateToggle:hover {
+    transform: scale(1.06) !important;
+    box-shadow: 0 18px 38px rgba(105, 14, 26, .26);
+    z-index: 5;
+  }
+}
+/* YouTube大会閲覧コード用ボタンのみ */
+#youtubeLinkStartButton,
+#youtubeLinkReissueButton {
+    padding: 9px 75px;
+}

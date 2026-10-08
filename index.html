@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#080d16" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="Tournament" name="apple-mobile-web-app-title"/>
+<title>Tournament</title>
+<link href="./favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="./style.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="app">
+<!-- =====================================================
+         ヘッダー
+    ====================================================== -->
+<header class="app-header">
+<div class="header-inner">
+<a aria-label="TOPページに戻る" class="brand brand-home-link" href="./">
+<div class="brand-mark">
+                    TO
+                </div>
+<div class="brand-text">
+<h1>
+                        Tournament
+                    </h1>
+<div class="brand-subtitle">
+                        ONLINE TOURNAMENT
+                    </div>
+</div>
+</a>
+</div>
+</header>
+<!-- =====================================================
+         メイン
+    ====================================================== -->
+<main class="main-content">
+<!-- =================================================
+             メッセージ
+        ================================================== -->
+<div class="message hidden" id="message" role="alert">
+</div>
+<!-- =================================================
+             トップ画面
+        ================================================== -->
+<section class="screen hidden" id="youtubeCreateScreen">
+<div class="youtube-create-page">
+<button class="button" id="youtubeCreateBackButton" type="button">← トップへ戻る</button>
+<section class="panel youtube-create-page-panel">
+<div class="youtube-create-page-heading">
+<h2>YouTube 連携版</h2>
+<p>YOUTUBE DATA API</p>
+</div>
+<form class="youtube-create-form" id="createYoutubeTournamentForm">
+<div class="field-group">
+<label for="youtubeTournamentName">大会名</label>
+<input autocomplete="off" id="youtubeTournamentName" maxlength="100" placeholder="大会名を入力" required="" type="text"/>
+</div>
+<div class="field-group">
+<label for="youtubeHostHandle">配信者のYouTubeハンドル</label>
+<input autocomplete="off" id="youtubeHostHandle" placeholder="@example" required="" type="text"/>
+</div>
+<div class="field-group">
+<label for="youtubeStreamUrl">配信URL（任意）</label>
+<input autocomplete="off" id="youtubeStreamUrl" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." type="url"/>
+</div>
+<div class="youtube-detection-note">
+<p>通常はYouTubeハンドルから現在配信中のLIVEを自動で検出します。</p>
+<p>自動検出でエラーが発生する場合は、配信URLを直接入力してください。</p>
+</div>
+<div class="youtube-entry-condition">
+<h3>参加条件</h3>
+<p>LIVEチャットで以下のいずれかを送信すると参加できます。</p>
+<div class="youtube-entry-words">
+                                「参加希望」 <span>or</span> 「ノ」 <span>or</span> 「ﾉ」
+                            </div>
+<div class="youtube-entry-exact">※ 完全一致</div>
+</div>
+<div class="youtube-api-test-area">
+<button class="button" id="youtubeApiTestButton" type="button">YouTubeチャンネル接続テスト</button>
+<div aria-live="polite" class="youtube-api-test-result hidden" id="youtubeApiTestResult" role="status"></div>
+<button class="button" id="youtubeLiveTestButton" type="button">LIVE接続テスト</button>
+<div aria-live="polite" class="youtube-api-test-result hidden" id="youtubeLiveTestResult" role="status"></div>
+</div>
+<div class="form-message error hidden" id="youtubeCreateError"></div>
+<button class="button button-primary youtube-create-button" id="createYoutubeTournamentButton" type="submit">
+                            YouTube連携大会を作成する
+                        </button>
+</form>
+</section>
+</div>
+</section>
+<section class="screen" id="homeScreen">
+<!-- =========================================
+                 タイトル
+            ========================================== -->
+<section class="welcome-section">
+<div class="welcome-mark">
+                    TO
+                </div>
+<h2>
+                    Tournament
+                </h2>
+<div class="welcome-subtitle">
+                    CREATE OR JOIN A TOURNAMENT
+                </div>
+<p>
+                    大会を作成、または参加
+                </p>
+</section>
+<div class="tournament-mode-content" id="normalTournamentMode">
+<div class="home-container">
+<!-- =========================================
+                     大会作成
+                ========================================== -->
+<section class="panel home-panel home-create-normal">
+<div class="panel-header centered">
+<div>
+<h2>
+                                通常のトーナメントを作成
+                            </h2>
+<div class="panel-subtitle">
+                                CREATE TOURNAMENT
+                            </div>
+</div>
+</div>
+<form class="tournament-form" id="createTournamentForm">
+<label class="form-field" for="tournamentName">
+<span class="form-label">
+                                大会名
+                            </span>
+<input autocomplete="off" id="tournamentName" maxlength="100" name="tournamentName" placeholder="例：第1回ゲーム大会" required="" type="text"/>
+</label>
+<button class="button button-primary large-button" id="createTournamentButton" type="submit">
+                            トーナメントを作成する
+                        </button>
+</form>
+</section>
+<!-- =========================================
+                     OR
+                ========================================== -->
+<div class="or-separator">
+<span>
+                        OR
+                    </span>
+</div>
+<!-- =========================================
+                     大会参加
+                ========================================== -->
+<section class="panel home-panel home-join-panel">
+<div class="panel-header centered">
+<div>
+<h2>
+                                大会に参加
+                            </h2>
+<div class="panel-subtitle">
+                                JOIN TOURNAMENT
+                            </div>
+</div>
+</div>
+<form class="tournament-form" id="joinTournamentForm">
+<label class="form-field" for="tournamentCode">
+<span class="form-label">
+                                大会コード
+                            </span>
+<input autocomplete="off" id="tournamentCode" maxlength="10" name="tournamentCode" placeholder="AB12CD34EF" required="" spellcheck="false" type="text"/>
+</label>
+<label class="form-field" for="displayName">
+<span class="form-label">
+                                参加者名
+                            </span>
+<input autocomplete="off" id="displayName" maxlength="30" name="displayName" placeholder="例：シオン" required="" type="text"/>
+</label>
+<button class="button button-primary large-button" id="joinTournamentButton" type="submit">
+                            大会に参加する
+                        </button>
+</form>
+</section>
+</div>
+<div class="youtube-home-row">
+<section class="panel youtube-create-panel">
+<button aria-label="YouTube連携トーナメント作成ページへ移動" class="tournament-mode-card tournament-mode-card-youtube youtube-create-toggle" id="youtubeCreateToggle" type="button">
+<span class="tournament-mode-title">YouTube 連携版</span>
+<span class="tournament-mode-description">YOUTUBE DATA API</span>
+</button>
+</section>
+</div>
+<!-- =========================================
+             あなたが参加してる大会一覧
+        ========================================== -->
+<section class="panel home-panel" id="myTournamentsPanel">
+<div id="youtubeLinkPanel" class="youtube-link-inline">
+  <div class="youtube-link-actions">
+    <button class="button button-primary" id="youtubeLinkStartButton" type="button" aria-controls="youtubeLinkChallenge" aria-expanded="false">YouTube 連携型の<br>大会閲覧コード発行</button>
+    <button class="button button-secondary hidden" id="youtubeLinkReissueButton" type="button">コードの再発行</button>
+  </div>
+  <div id="youtubeLinkChallenge" class="hidden" aria-live="polite">
+    <p class="youtube-link-instructions"><span>先にYouTube LIVEで「参加希望」 or 「ノ」 or 「ﾉ」を送信してください。</span><span>以下の6桁を同じチャットに投稿してください。有効期限切れの場合は再発行してください（<span id="youtubeLinkCountdown" class="youtube-link-countdown">10:00</span> 有効）</span></p>
+    <strong id="youtubeLinkCode" class="youtube-link-code"></strong>
+    <p id="youtubeLinkStatus" role="status">チャットへの投稿を待っています…</p>
+  </div>
+</div>
+
+<div class="panel-header centered">
+<div>
+<h2>
+                        あなたが参加してる大会一覧
+                    </h2>
+<div class="panel-subtitle">
+                        YOUR TOURNAMENTS
+                    </div>
+</div>
+</div>
+<div class="my-tournament-section-heading">
+<h3 class="my-tournament-section-title">
+                    現在進行中の大会
+                </h3>
+<div class="my-tournament-section-subtitle">
+                    CURRENT TOURNAMENTS
+                </div>
+</div>
+<div class="my-tournament-list" id="myTournamentList">
+<div class="empty-state">
+                    参加中の大会はありません。
+                </div>
+</div>
+<div class="bulk-tournament-actions">
+<button class="button bulk-tournament-button bulk-archive-button" id="archiveAllHostTournamentsButton" type="button">
+                    全部の大会を終了する
+                </button>
+<button class="button bulk-tournament-button bulk-delete-button" id="deleteAllHostTournamentsButton" type="button">
+                    全部の大会を削除する
+                </button>
+</div>
+<div class="show-archived-tournaments-area">
+<button class="show-archived-tournaments-button hidden" id="showArchivedTournamentsButton" type="button">
+                    終了した大会を表示
+                </button>
+</div>
+<div class="my-tournament-list hidden" id="archivedTournamentList">
+</div>
+</section>
+</div> <!-- /normalTournamentMode -->
+</section> <!-- /homeScreen -->
+<!-- =================================================
+             大会画面
+        ================================================== -->
+<section class="screen hidden" id="tournamentScreen">
+<!-- =============================================
+                 大会情報
+            ============================================== -->
+<section class="panel tournament-info-panel">
+<div class="tournament-title-area">
+<div class="tournament-label">
+                        TOURNAMENT
+                    </div>
+<h2 id="currentTournamentName">
+                        大会名
+                    </h2>
+<div class="tournament-code-block">
+<span class="code-label">
+                            CODE
+                        </span>
+<strong id="currentTournamentCode">
+                            ●●●●●●●●●●
+                        </strong>
+<button class="button button-secondary copy-button" id="copyTournamentCodeButton" type="button">
+                            コピー
+                        </button>
+<button aria-label="大会コードを表示" class="code-visibility-button is-hidden" id="toggleTournamentCodeButton" title="大会コードを表示" type="button">
+<i aria-hidden="true" class="fa-regular fa-eye-slash"></i>
+</button>
+</div>
+</div>
+</section>
+<!-- YouTube連携大会の主催者だけに表示 -->
+<section class="panel youtube-live-save-panel hidden" id="youtubeLiveSavePanel">
+<div class="panel-header centered"><div>
+<h2>YouTube LIVE接続</h2>
+<div class="panel-subtitle">LIVE CHAT CONNECTION</div>
+</div></div>
+<button class="button button-primary" id="youtubeLiveSaveButton" type="button">LIVE接続・大会へ保存</button>
+<div aria-live="polite" class="youtube-live-save-result" id="youtubeLiveSaveResult" role="status"></div>
+<p class="youtube-live-save-note">この操作ではLIVE情報の保存のみを行います。チャット参加受付の自動監視はまだ開始しません。</p>
+</section>
+<!-- YouTube大会の主催者だけに表示するチャット監視 -->
+<section class="panel youtube-chat-monitor-panel hidden" id="youtubeChatMonitorPanel">
+<div class="panel-header centered"><div>
+<h2>YouTube チャット参加受付</h2>
+<div class="panel-subtitle">LIVE CHAT MONITOR</div>
+</div></div>
+<div class="youtube-chat-monitor-actions">
+<button class="button youtube-chat-monitor-start" id="youtubeChatMonitorStartButton" type="button">チャット監視開始</button>
+<button class="button button-secondary" disabled="" id="youtubeChatMonitorStopButton" type="button">チャット監視停止</button>
+</div>
+<div aria-live="polite" class="youtube-chat-monitor-status" id="youtubeChatMonitorStatus" role="status">監視停止中</div>
+<p class="youtube-live-save-note">LIVE接続・大会へ保存した後に開始できます。監視はこの画面を開いている間だけ動作します。</p>
+</section>
+<!-- =============================================
+                 参加人数から自動生成するトーナメント表
+            ============================================== -->
+<section class="panel bracket-setup-panel hidden" id="bracketSetupPrototype">
+<div class="panel-header">
+<div>
+<div class="bracket-title-row"><h2 id="bracketPanelTitle">トーナメント作成</h2><span class="bracket-viewer-name hidden" id="bracketViewerName"></span></div>
+<div class="panel-subtitle" id="bracketPanelSubtitle">AUTO BRACKET SETUP</div>
+</div>
+<div class="bracket-header-actions"><div class="status-badge waiting" id="tournamentStatus">参加受付中</div></div>
+</div>
+<div class="bulk-participant-box">
+<div class="bulk-participant-head">
+<div>
+<strong>参加者を一括追加</strong>
+<div class="bulk-participant-help">1行につき1人の名前を入力してください。</div>
+</div>
+<div class="bulk-participant-head-actions">
+<span class="count-badge" id="bulkParticipantPreviewCount">0 PLAYERS</span>
+<button class="button button-secondary bulk-toggle-button" id="bulkParticipantToggleButton" type="button">非表示</button>
+</div>
+</div>
+<div id="bulkParticipantBody">
+<textarea id="bulkParticipantTextarea" maxlength="4096" placeholder="しおん
+田中
+佐藤
+山田" rows="6"></textarea>
+<div class="bulk-participant-actions">
+<span class="bulk-participant-limit">大会の参加者は最大256人</span>
+<button class="button button-secondary" id="bulkParticipantAddButton" type="button">まとめて追加</button>
+</div>
+</div>
+</div>
+<div class="bracket-auto-summary">
+<div><span>現在の参加者</span><strong id="bracketAutoPlayerCount">0人</strong></div>
+<div><span>シード枠数</span><strong id="bracketAutoSlotCount">0枠</strong></div>
+</div>
+<div class="bracket-setup-controls">
+<div class="bracket-setup-primary-actions">
+<button class="button button-secondary" id="bracketManualBulkButton" type="button">手動で一括配置</button>
+<button class="button button-secondary" id="bracketRandomButton" type="button">ランダムに配置</button>
+<button class="button button-primary" id="bracketConfirmButton" type="button">配置を確定</button>
+</div>
+<div class="bracket-setup-fullscreen-row">
+<button class="button button-primary fullscreen-bracket-button hidden" id="previewFullscreenButton" type="button">全画面で確認</button>
+</div>
+<form class="bracket-live-participant-search hidden" id="bracketLiveParticipantSearchForm">
+<div class="bracket-live-participant-search-row">
+<input autocomplete="off" id="bracketLiveParticipantSearchInput" maxlength="35" placeholder="参加者名を完全一致で検索" type="text"/>
+<button class="button button-secondary" type="submit">検索</button>
+</div>
+</form>
+</div>
+<div class="bracket-setup-note">現在いる参加者の人数からトーナメント表を自動生成します。参加者名をつかんでいる間は名前がマウス・指に追従します。配置確定後はシード枠を色分けして表示します。</div>
+<div class="bracket-setup-player-pool" id="bracketSetupParticipantPool"></div>
+<div class="bracket-setup-canvas" id="bracketSetupCanvas"></div>
+</section>
+<!-- =============================================
+                 対戦カード作成
+            ============================================== -->
+<section class="panel matchup-builder-panel hidden" id="matchupBuilder">
+<div class="panel-header">
+<div>
+<h2>
+                            対戦カード作成
+                        </h2>
+<div class="panel-subtitle">
+                            MATCHUP BUILDER
+                        </div>
+</div>
+<div class="host-badge">
+                        HOST
+                    </div>
+</div>
+<div class="matchup-builder-description">
+                    参加者を対戦カードの「MATCH」へ移動して、
+                    対戦相手を設定してください。
+                </div>
+<!-- =========================================
+                     配置用参加者 + 対戦カード追加
+                     スクロール追従エリア
+                ========================================== -->
+<div class="matchup-sticky-tools">
+<div class="matchup-player-pool">
+<div class="matchup-section-header">
+<div class="matchup-section-title">
+                                参加者
+                            </div>
+<div class="count-badge" id="matchupParticipantCount">
+                                0 PLAYERS
+                            </div>
+</div>
+<div class="matchup-participant-list" id="matchupParticipantList">
+</div>
+</div>
+<button class="button button-primary matchup-add-button" id="addMatchupButton" type="button">
+                        ＋ 対戦カードを追加
+                    </button>
+</div>
+<!-- =========================================
+                     対戦カード一覧
+                ========================================== -->
+<div class="matchup-card-list" id="matchupCardList">
+<div class="empty-state">
+                        対戦カードがありません。<br/>
+                        「＋ 対戦カードを追加」から作成してください。
+                    </div>
+</div>
+</section>
+<!-- =============================================
+                 トーナメント表
+            ============================================== -->
+<section class="panel bracket-panel hidden" id="legacyBracketPanel">
+<div class="panel-header">
+<div>
+<h2>
+                            トーナメント表
+                        </h2>
+<div class="panel-subtitle">
+                            TOURNAMENT BRACKET
+                        </div>
+</div>
+</div>
+<div class="bracket" id="bracket">
+<div class="empty-state">
+<div class="empty-icon">
+                            VS
+                        </div>
+<div>
+                            大会開始後に対戦表が表示されます。
+                        </div>
+</div>
+</div>
+</section>
+<!-- =============================================
+                 自分の試合
+            ============================================== -->
+<section class="panel my-match-panel hidden" id="myMatchArea">
+<div class="panel-header centered">
+<div>
+<h2>
+                            自分の試合
+                        </h2>
+<div class="panel-subtitle">
+                            YOUR MATCH
+                        </div>
+</div>
+</div>
+<div class="my-match-info" id="myMatchInfo">
+</div>
+<button class="button button-victory victory-button" id="victoryButton" type="button">
+<span class="victory-icon">
+                        ★
+                    </span>
+
+                    勝利
+                </button>
+</section>
+<!-- =============================================
+                 主催者メニュー
+            ============================================== -->
+<section class="panel host-panel hidden" id="hostControls">
+<div class="panel-header">
+<div>
+<h2>
+                            主催者メニュー
+                        </h2>
+<div class="panel-subtitle">
+                            HOST CONTROLS
+                        </div>
+</div>
+<div class="host-badge">
+                        HOST
+                    </div>
+</div>
+<!-- =========================================
+                     大会操作
+                ========================================== -->
+<div class="host-actions">
+<button class="button button-primary" id="startTournamentButton" type="button">
+                        大会を開始する
+                    </button>
+<button class="button button-warning" id="pauseTournamentButton" type="button">
+                        大会を一時中断
+                    </button>
+<button class="button button-secondary" id="undoButton" type="button">
+                        ↶ 1つ前に戻す
+                    </button>
+<button class="button button-danger" id="resetTournamentButton" type="button">
+                        トーナメントをリセット
+                    </button>
+</div>
+<div class="tournament-lifecycle-panel">
+<div class="tournament-lifecycle-heading">
+<h3 class="tournament-lifecycle-title">
+                            大会の再開と終了
+                        </h3>
+<div class="tournament-lifecycle-subtitle">
+                            TOURNAMENT MANAGEMENT
+                        </div>
+</div>
+<div class="tournament-lifecycle-actions">
+<button class="button button-success" id="reopenTournamentButton" type="button">
+                           終了した大会を再開させる
+                       </button>
+<button class="button button-danger" id="archiveTournamentButton" type="button">
+                           大会を終了する
+                       </button>
+</div>
+</div>
+<!-- =========================================
+                     参加者管理
+                ========================================== -->
+<div class="host-player-management">
+<div class="management-header">
+<div>
+<h3>
+                                参加者管理
+                            </h3>
+<div class="management-subtitle">
+                                PLAYER MANAGEMENT
+                            </div>
+</div>
+<div class="count-badge" id="hostParticipantCount">
+                            0 PLAYERS
+                        </div>
+</div>
+<form class="participant-search-form" id="participantSearchForm">
+<input autocomplete="off" id="participantSearchInput" maxlength="30" placeholder="参加者名を完全一致で検索" type="text"/>
+<button class="button button-secondary" type="submit">検索</button>
+</form>
+<div class="participant-list-heading">参加者一覧</div>
+<div class="host-participant-list" id="hostParticipantList">
+</div>
+</div>
+</section>
+<!-- =============================================
+                 戻る
+            ============================================== -->
+<div class="bottom-actions">
+<button class="button button-secondary back-button" id="leaveTournamentButton" type="button">
+                    ← トップへ戻る
+                </button>
+</div>
+</section>
+</main>
+<!-- =====================================================
+         確認ダイアログ
+    ====================================================== -->
+<div class="dialog-overlay hidden" id="dialogOverlay">
+<div class="dialog">
+<div class="dialog-icon" id="dialogIcon">
+                !
+            </div>
+<h3 id="dialogTitle">
+                確認
+            </h3>
+<p id="dialogMessage">
+</p>
+<div class="dialog-actions">
+<button class="button button-secondary" id="dialogCancel" type="button">
+                    キャンセル
+                </button>
+<button class="button button-danger" id="dialogConfirm" type="button">
+                    実行する
+                </button>
+</div>
+</div>
+</div>
+<!-- =====================================================
+         Supabase
+    ====================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- =====================================================
+         Tournament App
+    ====================================================== -->
+<script src="./app.js"></script>
+</div>
+</body>
+</html>
