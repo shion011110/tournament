@@ -6048,3 +6048,173 @@ body.bracket-fullscreen-mode #bracketSetupCanvas {
 #youtubeLinkReissueButton {
     padding: 9px 75px;
 }
+/* STEP 3-4: 主催者限定Googleログイン */
+#homeScreen .host-login-panel {
+    width: min(calc(100% - 32px), 1120px);
+    margin: 0 auto 18px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, .65);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+#homeScreen .host-login-text { display: flex; flex-direction: column; gap: 5px; }
+#homeScreen .host-login-text span { color: #cbd5e1; font-size: .88rem; }
+#homeScreen .host-login-panel .button { flex-shrink: 0; }
+#homeScreen #hostNormalCreatePanel.hidden,
+#homeScreen #hostYoutubeCreateRow.hidden { display: none !important; }
+#homeScreen .home-container:has(> #hostNormalCreatePanel.hidden) > .home-join-panel {
+    grid-column: 1 / -1;
+}
+@media (max-width: 600px) {
+    #homeScreen .host-login-panel { flex-direction: column; align-items: stretch; }
+}
+
+/* STEP 4-2 観戦専用 */
+.public-watch-rounds { display:flex; align-items:flex-start; gap:16px; overflow-x:auto; padding:18px 0; }
+.public-watch-round { min-width:190px; flex:1; }
+.public-watch-round h3 { margin:0 0 12px; font-size:1rem; }
+.public-watch-match { padding:12px; margin-bottom:12px; border:1px solid var(--border-color, #566174); border-radius:10px; }
+.public-watch-match div { padding:5px 0; overflow-wrap:anywhere; }
+.public-watch-match small { opacity:.7; }
+.public-watch-actions { margin:12px 0; }
+
+/* STEP 4-5: shared Google login explanation accordion */
+#homeScreen .host-login-help-toggle {
+    appearance: none; border: 0; background: none; padding: 2px 0;
+    color: #93c5fd; cursor: pointer; text-decoration: underline;
+    text-underline-offset: 3px; font: inherit; font-size: .85rem;
+    text-align: left; align-self: flex-start;
+}
+#homeScreen .host-login-help-toggle:hover { color: #bfdbfe; }
+#homeScreen .host-login-help[hidden] { display: none !important; }
+#homeScreen .host-login-help { margin-top: 6px; max-width: 680px; }
+#homeScreen .host-login-help p { margin: 0 0 7px; font-size: .85rem; line-height: 1.55; color: #cbd5e1; }
+#homeScreen .host-login-help p strong { color: #f1f5f9; }
+
+/* STEP 4-6: 統合大会一覧を旧「あなたが参加してる大会一覧」と同じカード配置に統一 */
+#publicWatchPanel #publicWatchActive,
+#publicWatchPanel #publicWatchFinished {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+#publicWatchPanel .my-tournament-item {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+@media (max-width: 900px) {
+    #publicWatchPanel #publicWatchActive,
+    #publicWatchPanel #publicWatchFinished { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    #publicWatchPanel #publicWatchActive,
+    #publicWatchPanel #publicWatchFinished { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* STEP 4-6: 旧一覧と同じ「一括操作の下に終了した大会の開閉」 */
+#myTournamentsPanel .unified-finished-toggle-area {
+    display: flex;
+    justify-content: center;
+    margin: 14px 0 12px;
+}
+#myTournamentsPanel #unifiedFinishedSection.hidden { display: none !important; }
+/* カードはPC最大3列。狭い画面では2列→1列 */
+#myTournamentsPanel #publicWatchActive,
+#myTournamentsPanel #publicWatchFinished {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+#myTournamentsPanel #publicWatchActive > .my-tournament-item,
+#myTournamentsPanel #publicWatchFinished > .my-tournament-item {
+    width: 100%; min-width: 0; box-sizing: border-box;
+}
+@media (max-width: 900px) {
+    #myTournamentsPanel #publicWatchActive,
+    #myTournamentsPanel #publicWatchFinished { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    #myTournamentsPanel #publicWatchActive,
+    #myTournamentsPanel #publicWatchFinished { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* STEP 4-6: spectator bracket shares fullscreen bracket visuals */
+#publicWatchScreen { max-width: none; width: 100%; }
+#publicWatchScreen > .panel { background: #080f1b; border: 1px solid rgba(148,163,184,.28); border-radius: 12px; padding: 12px; }
+#publicWatchScreen #publicWatchTitle { margin: 12px 0 4px; }
+#publicWatchScreen #publicWatchStatus { margin: 0 0 8px; color: #94a3b8; }
+#publicWatchBracket.public-watch-bracket-canvas { width:100%; max-height:none; min-height: min(60vh,600px); height:calc(100vh - 225px); overflow:auto; margin: 8px 0 0; box-sizing:border-box; padding:14px; background:#080f1b; }
+#publicWatchBracket .bracket-round-matches { position:relative; display:flex; flex-direction:column; justify-content:space-around; gap:24px; min-height:100%; }
+#publicWatchBracket .bracket-round-column { min-width:205px; }
+#publicWatchBracket .auto-match { min-height:94px; }
+#publicWatchBracket .auto-match .future-slot { min-height:42px; box-sizing:border-box; }
+#publicWatchBracket .auto-bracket { align-items:stretch; min-height:100%; }
+#publicWatchBracket .bracket-winner-column { justify-content:center; }
+#publicWatchBracket .bracket-center-final { position:relative; }
+#publicWatchBracket .bracket-final-match .future-slot { margin:4px 0; }
+#publicWatchBracket .generated-win-button { align-self:stretch; margin:6px 0 0; }
+@media(max-width:700px){#publicWatchBracket.public-watch-bracket-canvas{height:calc(100dvh - 200px); min-height:350px;}}
+
+/* STEP 4-6: public watch matches host bracket geometry and connectors */
+#publicWatchBracket .bracket-round-matches { display:block!important; flex:none!important; min-height:0!important; gap:0!important; }
+#publicWatchBracket .auto-bracket { align-items:stretch; min-height:0; position:relative; }
+#publicWatchBracket .auto-match { min-height:0; }
+#publicWatchBracket .auto-match::before, #publicWatchBracket .auto-match::after, #publicWatchBracket .match-connector-stem { display:none!important; }
+#publicWatchBracket .bracket-connection-layer { position:absolute; top:0; left:0; pointer-events:none; z-index:0; overflow:visible; }
+#publicWatchBracket .bracket-round-column, #publicWatchBracket .bracket-half, #publicWatchBracket .bracket-center-final { position:relative; z-index:1; }
+#publicWatchBracket .bracket-round-matches { position:relative!important; }
+#publicWatchBracket .future-slot { display:flex; gap:6px; justify-content:space-between; align-items:center; }
+#publicWatchBracket .public-watch-search-hit { outline:3px solid #60a5fa; outline-offset:2px; box-shadow:0 0 0 5px rgba(96,165,250,.15); }
+#publicWatchScreen .public-watch-search-form { display:block; max-width:610px; margin:16px auto 14px; }
+#publicWatchScreen .public-watch-search-result { text-align:center; color:#94a3b8; min-height:18px; font-size:12px; }
+#publicWatchBracket .bracket-center-final .bracket-final-match { position:absolute; left:0; right:0; transform:translateY(-50%); }
+
+/* 通常版のフォームだけを非表示。親要素はYouTube作成と大会一覧を含むため非表示にしない */
+#homeScreen #normalTournamentMode > .home-container { display: none !important; }
+
+/* STEP 4-9: per-participant undo */
+.participant-undo-button { margin-left: 6px; padding: 4px 9px; border: 1px solid #8b929e; border-radius: 6px; background: transparent; color: inherit; cursor: pointer; font-size: 12px; white-space: nowrap; }
+.participant-undo-button:hover { background: rgba(128,128,128,.18); }
+.participant-undo-button:disabled { opacity: .55; cursor: wait; }
+
+/* STEP 4-9: live bracket participant undo */
+#bracketSetupCanvas .participant-undo-button { display:inline-flex; align-items:center; flex:0 0 auto; margin-left:4px; padding:3px 6px; font-size:10px; line-height:1.3; }
+
+/* STEP 4-9: host action buttons fill the row with slightly wider spacing */
+#hostControls .host-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+#hostControls .host-actions > button:not([hidden]) {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+@media (max-width: 600px) {
+    #hostControls .host-actions { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+#publicWatchBracket .future-slot.public-watch-bye {
+ display:flex; flex-direction:row; justify-content:center; align-items:center;
+ border:1px solid #d97706; border-radius:9px; background:rgba(245,158,11,.13); color:#f59e0b;
+}
+#publicWatchBracket .future-slot.public-watch-bye .bye-exemption {
+ font-size:14px; font-weight:900; letter-spacing:1.5px; color:#f59e0b; white-space:nowrap;
+}
+
+
+/* TOP legal links */
+.legal-footer { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:10px 22px; margin:32px auto 12px; padding:22px 12px; border-top:1px solid rgba(148,163,184,.25); text-align:center; }
+.legal-footer a { color:inherit; opacity:.8; font-size:13px; text-decoration:underline; text-underline-offset:3px; }
+.legal-footer a:hover,.legal-footer a:focus-visible { opacity:1; }

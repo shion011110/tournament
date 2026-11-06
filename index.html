@@ -4,12 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<meta content="#080d16" name="theme-color"/>
+<meta content="#1d4ed8" name="theme-color"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 <meta content="Tournament" name="apple-mobile-web-app-title"/>
 <title>Tournament</title>
-<link href="./favicon.svg" rel="icon" type="image/svg+xml"/>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg"/>
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png"/>
+<link rel="manifest" href="./manifest.webmanifest"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
 <link href="./style.css" rel="stylesheet"/>
 </head>
@@ -106,18 +108,32 @@
                     Tournament
                 </h2>
 <div class="welcome-subtitle">
-                    CREATE OR JOIN A TOURNAMENT
+                    YOUTUBE TOURNAMENT
                 </div>
 <p>
-                    大会を作成、または参加
+                    YouTube連携トーナメント
                 </p>
+</section>
+<section class="host-login-panel" id="hostLoginPanel" aria-label="Googleアカウント連携">
+  <div class="host-login-text">
+    <strong>Googleアカウント連携</strong>
+    <span id="hostLoginStatus" role="status">ログイン状態を確認中…</span>
+    <button type="button" class="host-login-help-toggle" id="hostLoginHelpToggle" aria-expanded="true" aria-controls="hostLoginHelp">説明を非表示</button>
+    <div class="host-login-help" id="hostLoginHelp">
+      <p><strong>主催者の方</strong>：許可されたGoogleアカウントで大会を作成・管理できます。</p>
+      <p><strong>参加者の方</strong>：大会ページから勝利登録を行う際の本人確認にGoogleアカウントを使用します。</p>
+      <p><strong>観戦のみの方</strong>：ログイン不要です。公開大会一覧から観戦できます。</p>
+    </div>
+  </div>
+  <button class="button button-primary" id="hostGoogleLoginButton" type="button">Googleアカウントで連携</button>
+  <button class="button button-secondary hidden" id="hostGoogleLogoutButton" type="button">ログアウト</button>
 </section>
 <div class="tournament-mode-content" id="normalTournamentMode">
 <div class="home-container">
 <!-- =========================================
                      大会作成
                 ========================================== -->
-<section class="panel home-panel home-create-normal">
+<section class="panel home-panel home-create-normal hidden" id="hostNormalCreatePanel">
 <div class="panel-header centered">
 <div>
 <h2>
@@ -143,7 +159,7 @@
 <!-- =========================================
                      OR
                 ========================================== -->
-<div class="or-separator">
+<div class="or-separator hidden" data-normal-disabled="true">
 <span>
                         OR
                     </span>
@@ -151,7 +167,7 @@
 <!-- =========================================
                      大会参加
                 ========================================== -->
-<section class="panel home-panel home-join-panel">
+<section class="panel home-panel home-join-panel hidden" data-normal-disabled="true">
 <div class="panel-header centered">
 <div>
 <h2>
@@ -181,41 +197,29 @@
 </form>
 </section>
 </div>
-<div class="youtube-home-row">
+<div class="youtube-home-row hidden" id="hostYoutubeCreateRow">
 <section class="panel youtube-create-panel">
 <button aria-label="YouTube連携トーナメント作成ページへ移動" class="tournament-mode-card tournament-mode-card-youtube youtube-create-toggle" id="youtubeCreateToggle" type="button">
-<span class="tournament-mode-title">YouTube 連携版</span>
+<span class="tournament-mode-title">YouTube 連携 トーナメント作成</span>
 <span class="tournament-mode-description">YOUTUBE DATA API</span>
 </button>
 </section>
 </div>
 <!-- =========================================
-             あなたが参加してる大会一覧
+             大会一覧
         ========================================== -->
 <section class="panel home-panel" id="myTournamentsPanel">
-<div id="youtubeLinkPanel" class="youtube-link-inline">
-  <div class="youtube-link-actions">
-    <button class="button button-primary" id="youtubeLinkStartButton" type="button" aria-controls="youtubeLinkChallenge" aria-expanded="false">YouTube 連携型の<br>大会閲覧コード発行</button>
-    <button class="button button-secondary hidden" id="youtubeLinkReissueButton" type="button">コードの再発行</button>
-  </div>
-  <div id="youtubeLinkChallenge" class="hidden" aria-live="polite">
-    <p class="youtube-link-instructions"><span>先にYouTube LIVEで「参加希望」 or 「ノ」 or 「ﾉ」を送信してください。</span><span>以下の6桁を同じチャットに投稿してください。有効期限切れの場合は再発行してください（<span id="youtubeLinkCountdown" class="youtube-link-countdown">10:00</span> 有効）</span></p>
-    <strong id="youtubeLinkCode" class="youtube-link-code"></strong>
-    <p id="youtubeLinkStatus" role="status">チャットへの投稿を待っています…</p>
-  </div>
-</div>
-
 <div class="panel-header centered">
 <div>
 <h2>
-                        あなたが参加してる大会一覧
+                        大会一覧
                     </h2>
 <div class="panel-subtitle">
-                        YOUR TOURNAMENTS
+                        TOURNAMENTS
                     </div>
 </div>
 </div>
-<div class="my-tournament-section-heading">
+<div class="my-tournament-section-heading hidden" id="legacyMyTournamentHeading">
 <h3 class="my-tournament-section-title">
                     現在進行中の大会
                 </h3>
@@ -223,10 +227,16 @@
                     CURRENT TOURNAMENTS
                 </div>
 </div>
-<div class="my-tournament-list" id="myTournamentList">
+<div class="my-tournament-list hidden" id="myTournamentList">
 <div class="empty-state">
                     参加中の大会はありません。
                 </div>
+</div>
+<!-- STEP 4-2: 公開大会一覧・観戦専用画面 -->
+<div id="publicWatchPanel">
+
+  <div class="my-tournament-section-heading"><h3 class="my-tournament-section-title">現在進行中の大会</h3></div>
+  <div id="publicWatchActive" class="my-tournament-list"><div class="empty-state">読み込み中…</div></div>
 </div>
 <div class="bulk-tournament-actions">
 <button class="button bulk-tournament-button bulk-archive-button" id="archiveAllHostTournamentsButton" type="button">
@@ -236,7 +246,14 @@
                     全部の大会を削除する
                 </button>
 </div>
-<div class="show-archived-tournaments-area">
+<div class="unified-finished-toggle-area">
+  <button type="button" id="unifiedFinishedToggle" class="show-archived-tournaments-button" aria-controls="unifiedFinishedSection" aria-expanded="false">終了した大会を表示</button>
+</div>
+<div id="unifiedFinishedSection" class="hidden">
+  <div class="my-tournament-section-heading"><h3 class="my-tournament-section-title">終了した大会</h3></div>
+  <div id="publicWatchFinished" class="my-tournament-list"><div class="empty-state">読み込み中…</div></div>
+</div>
+<div class="show-archived-tournaments-area hidden">
 <button class="show-archived-tournaments-button hidden" id="showArchivedTournamentsButton" type="button">
                     終了した大会を表示
                 </button>
@@ -244,11 +261,35 @@
 <div class="my-tournament-list hidden" id="archivedTournamentList">
 </div>
 </section>
+
+
 </div> <!-- /normalTournamentMode -->
+<footer class="legal-footer" aria-label="サイト情報">
+<a href="./terms.html">利用規約</a>
+<a href="./privacy.html">プライバシーポリシー</a>
+<a href="./account-revocation.html">Google／YouTube連携解除</a>
+<a href="mailto:information.tournaments@gmail.com">お問い合わせ</a>
+</footer>
 </section> <!-- /homeScreen -->
 <!-- =================================================
              大会画面
         ================================================== -->
+
+<section class="screen hidden" id="publicWatchScreen">
+  <section class="panel home-panel">
+    <button class="button button-secondary" id="publicWatchBack" type="button">← トップへ戻る</button>
+    <h2 id="publicWatchTitle">大会観戦</h2>
+    <p id="publicWatchStatus" aria-live="polite"></p>
+    <form id="publicWatchSearchForm" class="bracket-live-participant-search public-watch-search-form">
+      <div class="bracket-live-participant-search-row">
+        <input id="publicWatchSearchInput" autocomplete="off" maxlength="35" placeholder="参加者名を完全一致で検索" type="text" />
+        <button class="button button-secondary" type="submit">検索</button>
+      </div>
+    </form>
+    <div id="publicWatchSearchResult" class="public-watch-search-result" aria-live="polite"></div>
+    <div id="publicWatchBracket" class="bracket-setup-canvas public-watch-bracket-canvas"></div>
+  </section>
+</section>
 <section class="screen hidden" id="tournamentScreen">
 <!-- =============================================
                  大会情報
@@ -485,7 +526,7 @@
 <button class="button button-warning" id="pauseTournamentButton" type="button">
                         大会を一時中断
                     </button>
-<button class="button button-secondary" id="undoButton" type="button">
+<button class="button button-secondary" id="undoButton" type="button" hidden style="display:none">
                         ↶ 1つ前に戻す
                     </button>
 <button class="button button-danger" id="resetTournamentButton" type="button">
