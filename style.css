@@ -6218,3 +6218,10 @@ body.bracket-fullscreen-mode #bracketSetupCanvas {
 .legal-footer { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:10px 22px; margin:32px auto 12px; padding:22px 12px; border-top:1px solid rgba(148,163,184,.25); text-align:center; }
 .legal-footer a { color:inherit; opacity:.8; font-size:13px; text-decoration:underline; text-underline-offset:3px; }
 .legal-footer a:hover,.legal-footer a:focus-visible { opacity:1; }
+
+/* Shion Games Tournament: OAuth branding footer */
+#homeScreen .legal-footer { flex-direction:column; gap:9px; }
+#homeScreen .legal-footer-brand { font-size:15px; font-weight:700; line-height:1.5; }
+#homeScreen .legal-footer-copyright { font-size:12px; color:#94a3b8; }
+#homeScreen .legal-footer-links { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:8px; }
+#homeScreen .legal-footer-links > span { color:#94a3b8; font-size:12px; }
