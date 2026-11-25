@@ -1236,6 +1236,7 @@ function initializeHostLoginHelp() {
 
 async function refreshHostAuthorization() {
     authorizedHost = false;
+    document.getElementById("hostBulkTournamentActions")?.classList.add("hidden");
     const button = document.getElementById("hostGoogleLoginButton");
     const logoutButton = document.getElementById("hostGoogleLogoutButton");
     const status = document.getElementById("hostLoginStatus");
@@ -1263,6 +1264,7 @@ async function refreshHostAuthorization() {
 
     document.getElementById("hostNormalCreatePanel")?.classList.add("hidden");
     document.getElementById("hostYoutubeCreateRow")?.classList.toggle("hidden", !authorizedHost);
+    document.getElementById("hostBulkTournamentActions")?.classList.toggle("hidden", !authorizedHost);
     if (!authorizedHost && isYoutubeCreatePage()) {
         const url = new URL(window.location.href);
         url.searchParams.delete("page");
@@ -7901,6 +7903,11 @@ async function handleReopenTournament() {
 
 async function handleArchiveAllHostTournaments() {
 
+    if (!authorizedHost) {
+        showMessage("この操作には主催者権限が必要です。", "error");
+        return;
+    }
+
     const confirmed = await showConfirmDialog(
         "全部の大会を終了",
         "自分が主催している未終了の大会をすべて終了します。大会データは削除されません。",
@@ -7950,6 +7957,11 @@ async function handleArchiveAllHostTournaments() {
 
 
 async function handleDeleteAllHostTournaments() {
+
+    if (!authorizedHost) {
+        showMessage("この操作には主催者権限が必要です。", "error");
+        return;
+    }
 
     const confirmed = await showConfirmDialog(
         "全部の大会を削除",
