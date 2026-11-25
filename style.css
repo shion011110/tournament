@@ -4076,10 +4076,10 @@ body.matchup-drag-active
 }
 
 .my-tournament-section-title {
-    margin: 0;
-
+    margin: 10px 0 0 0;
     font-size: 18px;
     font-weight: 700;
+    text-align: center;
 }
 
 .my-tournament-section-subtitle {
