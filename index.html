@@ -16,7 +16,44 @@
 <link href="./style.css" rel="stylesheet"/>
 </head>
 <body>
-<div id="app">
+<style>
+#privacyConsentGate[hidden], #app[hidden]{display:none!important}
+#privacyConsentGate{min-height:100vh;display:grid;place-items:center;padding:20px;box-sizing:border-box;background:#0f172a;color:#e2e8f0}
+#privacyConsentGate .consent-card{width:100%;max-width:460px;box-sizing:border-box;background:#1e293b;padding:28px;border-radius:16px;text-align:center;line-height:1.8}
+#privacyConsentGate a{color:#93c5fd}
+#privacyConsentGate button{width:100%;margin-top:16px;padding:12px;background:#1d4ed8;color:white;border:0;border-radius:8px;font:inherit;cursor:pointer}
+</style>
+<section id="privacyConsentGate" aria-labelledby="privacyConsentTitle">
+<div class="consent-card">
+<h2 id="privacyConsentTitle">本サービスのご利用について</h2>
+<p>本サービスをご利用いただくには、利用規約およびプライバシーポリシーへの同意が必要です。</p>
+<p><a href="./terms.html" target="_blank" rel="noopener noreferrer">利用規約</a>　｜　<a href="./privacy.html" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a></p>
+<button type="button" id="privacyConsentAccept">同意して利用する</button>
+<p id="privacyConsentError" role="alert" hidden>同意状態を保存できません。ブラウザの保存設定をご確認ください。</p>
+</div>
+</section>
+<script>
+(() => {
+  const key = "tournamentPrivacyConsentVersion";
+  const version = "1";
+  const gate = document.getElementById("privacyConsentGate");
+  let agreed = false;
+  try { agreed = localStorage.getItem(key) === version; } catch (_) {}
+  if (agreed) gate.hidden = true;
+  document.getElementById("privacyConsentAccept").addEventListener("click", () => {
+    try {
+      localStorage.setItem(key, version);
+      if (localStorage.getItem(key) !== version) throw new Error("storage");
+    } catch (_) {
+      document.getElementById("privacyConsentError").hidden = false;
+      return;
+    }
+    window.location.reload();
+  });
+  window.tournamentPrivacyConsentGranted = agreed;
+})();
+</script>
+<div id="app" hidden>
 <!-- =====================================================
          ヘッダー
     ====================================================== -->
@@ -627,11 +664,11 @@
 <!-- =====================================================
          Supabase
     ====================================================== -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>if (window.tournamentPrivacyConsentGranted) { document.getElementById("app").hidden = false; document.write('<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"><\/script>'); }</script>
 <!-- =====================================================
          Tournament App
     ====================================================== -->
-<script src="./app.js"></script>
+<script>if (window.tournamentPrivacyConsentGranted) document.write('<script src="./app.js"><\/script>');</script>
 </div>
 </body>
 </html>
