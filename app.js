@@ -1243,6 +1243,8 @@ async function refreshHostAuthorization() {
     const isGoogle = Boolean(currentUser?.identities?.some(i => i.provider === "google"))
         || currentUser?.app_metadata?.providers?.includes("google") === true;
 
+    document.getElementById("hostLoginRetryNote")?.classList.toggle("hidden", isGoogle);
+
     if (isGoogle) {
         const { data, error } = await supabaseClient.rpc("is_authorized_host");
         if (error) {

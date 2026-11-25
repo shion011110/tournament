@@ -6232,3 +6232,9 @@ body.bracket-fullscreen-mode #bracketSetupCanvas {
     grid-column: 1 / -1;
     text-align: center;
 }
+
+/* Googleログインの再試行案内 */
+#homeScreen .host-login-help .host-login-retry-note {
+    font-size: .78rem;
+    color: #94a3b8;
+}
