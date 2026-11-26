@@ -584,6 +584,9 @@ async function initializeApp() {
         await ensureAnonymousSession();
         await refreshHostAuthorization();
         await registerGoogleOAuthCredentials();
+        // Temporary administrator-only OAuth verification control.
+        void initializeAdminGoogleReauth();
+
 
 
         document.getElementById("hostGoogleLoginButton")?.addEventListener("click", loginAsHostWithGoogle);
@@ -1298,6 +1301,45 @@ async function registerGoogleOAuthCredentials() {
         }
     } catch (_) {
         console.warn("Google OAuth credential registration failed.");
+    }
+}
+
+
+async function initializeAdminGoogleReauth() {
+    try {
+        const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession();
+        const session = sessionData?.session;
+        if (sessionError || !session?.user?.identities?.some(i => i.provider === "google")) return;
+        const { data, error } = await supabaseClient.functions.invoke("admin-account-management", {
+            body: { action: "verify" }
+        });
+        if (error || data?.success !== true || data?.is_admin !== true) return;
+        const panel = document.getElementById("hostLoginPanel");
+        if (!panel || document.getElementById("adminGoogleReauthButton")) return;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = "adminGoogleReauthButton";
+        button.className = "button button-secondary";
+        button.textContent = "Google再認証（管理者専用）";
+        button.addEventListener("click", async () => {
+            button.disabled = true;
+            try {
+                const check = await supabaseClient.functions.invoke("admin-account-management", { body: { action: "verify" } });
+                if (check.error || check.data?.is_admin !== true || check.data?.success !== true) throw new Error("管理者権限を確認できませんでした。");
+                const redirectTo = window.location.origin + window.location.pathname;
+                const { error } = await supabaseClient.auth.signInWithOAuth({
+                    provider: "google",
+                    options: { redirectTo, scopes: "https://www.googleapis.com/auth/youtube.readonly", queryParams: { access_type: "offline", prompt: "consent" } }
+                });
+                if (error) throw error;
+            } catch (error) {
+                showMessage("Google再認証を開始できませんでした。" + (error?.message || error), "error");
+                button.disabled = false;
+            }
+        });
+        panel.appendChild(button);
+    } catch (_) {
+        // Fail closed: do not display the temporary control.
     }
 }
 
