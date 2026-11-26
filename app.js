@@ -583,6 +583,7 @@ async function initializeApp() {
 
         await ensureAnonymousSession();
         await refreshHostAuthorization();
+        await registerGoogleOAuthCredentials();
 
 
         document.getElementById("hostGoogleLoginButton")?.addEventListener("click", loginAsHostWithGoogle);
@@ -1281,12 +1282,31 @@ function logoutGoogleAccount() {
     window.location.assign(url.pathname + url.search + url.hash);
 }
 
+async function registerGoogleOAuthCredentials() {
+    try {
+        const { data, error } = await supabaseClient.auth.getSession();
+        if (error) return;
+        const session = data?.session;
+        if (!session?.user?.identities?.some(i => i.provider === "google")) return;
+        const token = session.provider_refresh_token;
+        if (typeof token !== "string" || !token) return;
+        const { error: registrationError } = await supabaseClient.functions.invoke("google-oauth-register", {
+            body: { provider_refresh_token: token }
+        });
+        if (registrationError) {
+            console.warn("Google OAuth credential registration failed.");
+        }
+    } catch (_) {
+        console.warn("Google OAuth credential registration failed.");
+    }
+}
+
 async function loginAsHostWithGoogle() {
     const button = document.getElementById("hostGoogleLoginButton");
     if (button) button.disabled = true;
     try {
         const redirectTo = window.location.origin + window.location.pathname;
-        const options = { redirectTo, scopes: "https://www.googleapis.com/auth/youtube.readonly" };
+        const options = { redirectTo, scopes: "https://www.googleapis.com/auth/youtube.readonly", queryParams: { access_type: "offline" } };
         const { error } = await supabaseClient.auth.signInWithOAuth({ provider: "google", options });
         if (error) throw error;
     } catch (error) {
