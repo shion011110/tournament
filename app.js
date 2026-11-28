@@ -24,6 +24,17 @@ const supabaseClient = window.supabase.createClient(
 /* ==========================================================
    状態
 ========================================================== */
+// TEMP OAuth diagnostic: presence flags only; no tokens or identifiers.
+supabaseClient.auth.onAuthStateChange((event, session) => {
+    if (!["INITIAL_SESSION", "SIGNED_IN", "TOKEN_REFRESHED"].includes(event)) return;
+    console.info("[OAuth diagnostic]", event, {
+        logged_in: Boolean(session?.access_token),
+        google_linked: Boolean(session?.user?.identities?.some(i => i.provider === "google")),
+        provider_token_exists: Boolean(session?.provider_token),
+        refresh_token_exists: Boolean(session?.provider_refresh_token)
+    });
+});
+
 let currentUser = null;
 let authorizedHost = false;
 
